@@ -1,0 +1,155 @@
+The new FAIR B2B transfer system relies on the FAIR technical basis, the FAIR timing and control system and the low-level radio frequency (LLRF) system. The FAIR control system takes advantage of several collaborations with CERN by using, adapting and improving framework solutions like the settings management framework LSA, the front-end software framework FESA and the WR based timing system as core components. The General Machine Timing (GMT) system synchronizes all Front End Controllers (FEC) with nanosecond accuracy over the whole FAIR campus and distributes timing messages to all FECs via the reliable and robust WR network and controls all FECs to execute real-time actions at a designated time. The Scalable Control Unit (SCU) ~\cite{kaiser_f-tn-c-008e_2014} is a new generation of the standard FEC for the FAIR control system, which provides a compact and flexible solution for controlling all types of accelerator equipment. For the synchronization of the LLRF system, the GMT system is complemented and linked to the Bunch Phase Timing System (BuTiS), which serves as a campus-wide clocks distribution system with sub nanosecond resolution and stability over distances of several hundred meters. The LLRF system synchronizes cavities in every ring by the reference rf signal distribution system (short: rf system). 
+
+In order to complete the B2B transfer, first of all, the rf systems of the source and target rings must be correctly phase aligned. Secondly, the trigger for the extraction and injection kicker magnets must be synchronized with the beam. Finally the time point of the actual beam injection into the target ring must be indicated to enable beam instrumentation devices to measure the properties and the behavior of the beam directly after the injection. 
+
+For the B2B transfer, there is a so-called “B2B transfer master“, which is responsible for the data collection of two rings, the data calculation, the data redistribution and the B2B transfer status check. For FAIR, the source ring is the B2B transfer master.
+
+\subsection{Phase alignment}
+In order to realize the phase alignment, the phase difference $\Delta \phi$ between the two rf systems of two rings must be obtained. The phase difference is indirectly measured via a FAIR campus wide distributed reference signal synchronized with BuTiS clocks. 
+\begin{eqnarray}
+\begin{aligned}
+	\Delta \phi=(\Delta \phi_1-\Delta \phi_2) \mod 2\pi\\
+=[2\pi(f_1-f_\mathit{ref})t+\phi_1]\\
+-[2\pi(f_2-f_\mathit{ref})t+\phi_2] \mod 2\pi \\
+=[2\pi(f_1-f_2)t+\phi_1-\phi_2] \mod 2\pi
+\end{aligned}
+\end{eqnarray}
+
+where $\phi_1$ and $\phi_2$ are the initial phases of the two rf systems of the source and target rings, $f_1$ and $f_2$ the frequencies of the two rf systems, $f_\mathit{ref}$ the frequency of the reference signal and $\Delta \phi_1$ and $\Delta \phi_2$ the phase difference between the two rf systems and the reference signal. 
+
+For the phase difference, there are two scenarios according to the relation between $f_1$ and $f_2$. When $f_1$ equals to $f_2$, $\Delta \phi$ is constant. In order to change the phase difference for the phase alignment, the phase of either (or both) rf system must be shifted by modulating the frequency of the rf system away from the reference value for a specific period of time and then modulating back. This is called ``phase shift``.
+
+When $f_1$ and $f_2$ are slightly different, $\Delta \phi$ is a periodic function whose rate is the difference between two frequencies. This is called ``frequency beating``. The periodically variable rate is called the ``beating frequency``, $\Delta f=|f_1-f_2|$. The beating period is defined as a period of time for the periodical variation, namely $1/\Delta f$. Within one beating period, there exists a time point, which corresponds to a correct phase difference between the two rf systems, namely the phase alignment. 
+
+The phase alignment is realized based on two identical or two slightly different frequencies. These two frequencies are called ``synchronization frequencies``, denoted as $f_\mathit{syn}^{X}$, where X indicates the ring. The phase difference between two synchronization frequency is denoted as $\Delta \phi_\mathit{syn}$. The number of circulating buckets is determined by the harmonic number and the cavity rf frequency is the harmonic number times of the revolution frequency. The cavity rf frequency is denoted as $f_\mathit{rf}^{X}$ and the revolution rf frequency $f_\mathit{rev}^{X}$. The FAIR LLRF system produces the revolution frequency with the harmonic number 1 and supports not only the integer times of the revolution frequency but also the fraction of the revolution frequency. For all FAIR use cases, two synchronization frequencies are an integer multiple of the same or slightly different derived rf frequencies, which are the fraction of the revolution frequencies.
+\begin{equation}
+f_\mathit{syn}^{X}= Y\cdot f_\mathit{rev}^{X}/m
+\label{syn_form}
+\end{equation}
+where $f_\mathit{rev}^{X}/m$ represents the fraction of the revolution frequency and both $m$ and $Y$ are positive integers, which are determined by the circumference ratio and the harmonic numbers. 
+
+For FAIR use cases with an integer ratio in their circumference, there is an integer multiple relationship between two revolution frequencies. In this case, two identical synchronization frequencies are integer times of the revolution frequencies, namely $m=1$ in eq. ~\ref{syn_form}. For example, the $H^{+}$ B2B transfer from SIS18 to SIS100 has $f_{\mathit{syn}}^{SIS100}=5f_{\mathit{rev}}^{SIS100}$ and $f_{\mathit{syn}}^{SIS18}=f_{\mathit{rev}}^{SIS18}$, see FIG. ~\ref{USIS18}. 
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{USIS18.png}
+   \caption{Example of the synchronization frequencies in the scenario of an integer circumference ratio between two rings.}
+{\textsl{\small{The example is the FAIR use case of the $H^{+}$ B2B transfer from SIS18 to SIS100.}}}
+   \label{USIS18}
+\end{figure} 
+
+For FAIR use cases with a close to an integer ratio in their circumference, there is a close to an integer multiple relationship between two revolution frequencies. In this case, two slight different synchronization frequencies are integer times of the revolution frequencies, namely $m=1$ in eq. ~\ref{syn_form}. For example, four bunches transfer from SIS18 to ESR has $f_{\mathit{syn}}^{SIS18}=4f_{\mathit{rev}}^{SIS18}$ and $f_{\mathit{syn}}^{ESR}=2f_{\mathit{rev}}^{ESR}$, see FIG. ~\ref{ESR}. 
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{cir_noint.jpg}
+   \caption{Example of the synchronization frequencies in the scenario of a close to an integer circumference ratio between two rings.}
+{\textsl{\small{The example is the FAIR use case of four bunches transfer from SIS18 to ESR.}}}
+   \label{ESR}
+\end{figure} 
+
+For quite many FAIR use cases with the ring circumference ratio far away from an integer, there are big different revolution frequencies, two synchronization frequencies are calculated as $Y\cdot f_\mathit{rev}^{X}/m$. For example, the B2B transfer from CR to HESR has $f_{\mathit{syn}}^{CR}=2\cdot f_{\mathit{rev}}^{SIS100}/26$ and $f_{\mathit{syn}}^{HESR}=2\cdot f_{\mathit{rev}}^{CR}/10$, see FIG. ~\ref{CR-HESR}.  
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{CR-HESR.png}
+   \caption{Example of the synchronization frequencies in the scenario of a far away from an integer circumference ratio between two rings.}
+{\textsl{\small{The example is the FAIR use case of the B2B transfer from CR to HESR.}}}
+   \label{CR-HESR}
+\end{figure} 
+
+
+\subsubsection{Phase shift method}
+The required phase shift $\Delta \phi_\mathit{syn}$ depends on the frequency modulation $\Delta f_\mathit{rf}$ and the duration $T$. 
+\begin{equation}
+\Delta \phi_\mathit{syn}= 2\pi \int_{t_0}^{t_0+T} \Delta f_\mathit{rf}(t)dt \label{phase1}
+\end{equation}
+
+Beam is moved to off-momentum by adjusting frequency (magnetic field is constant) and moved back to the reference momentum after the certain duration. After the phase shift, bunches of the source ring are phase aligned with buckets of the target ring. The synchronization window is defined as the time frame after the rf frequency modulation, see FIG.~\ref{phase_shift}.
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{phase_shift.png}
+   \caption{Example for the phase shift method with a sinusoidal rf frequency modulation.}{\textsl{\small{Blue dots represent bunches of the source ring and red dots buckets of the target ring.}}}
+   \label{phase_shift}
+\end{figure} 
+
+The phase shift process must be performed slowly enough to preserve the longitudinal emittance. In summary the rf frequency modulation function must meet the following requirements.   
+\begin{itemize}
+	\item There is a maximum value for $\Delta f_\mathit{rf}$ , which is constrained by the maximum tolerable relative momentum shift $\frac{\Delta{p}}{p}$, which is decided by the semi-aperture required for the beam and the dispersion function. 
+\begin{equation}
+\frac{\Delta{p}}{p}  = \frac{1}{\frac{1}{\gamma^2}-\alpha_{\mathit{p}}}\cdot \frac{\Delta f_{\mathit{rf}}}{f_{\mathit{rf}}}
+\label{eq:phaseP11}
+\end{equation}
+where $\gamma$ is the relativistic factor, which measures the total particle energy in units of the particle rest energy and $\alpha_{\mathit{p}}$ is the momentum compaction factor.
+
+	\item The $1^\mathit{st}$ time derivative of $\Delta f_\mathit{rf}$ must be continuous, so that the synchronous phase changes continuously for the beam to follow. 
+\begin{eqnarray}
+\begin{aligned}
+	V_0\sin\phi_s\approx V_0\phi_s=2\pi R\rho\dot{B}=\frac{2\pi R B\rho}{p} \frac{d \Delta p}{dt}\\=\frac{2\pi R B\rho}{(1/\gamma^2-\alpha_p)f_\mathit{rf}} \frac{d \Delta f_\mathit{rf}}{dt}
+\end{aligned}
+\end{eqnarray}
+where $V_0$ is the amplitude of the rf voltage, $\phi_s$ the synchronous phase, $B$ the magnetic field, $\rho$ the bending radius of a particle immersed in a magnetic field $B$, $R$ the average orbit radius and $q$ the charge of a particle.
+	\item The $1^\mathit{st}$ time derivative of $\Delta f_\mathit{rf}$ must be small enough to guarantee buckets size big enough to capture bunches. 
+The ratio of the bucket size of a running bucket to that of a stationary bucket is called the ``bucket area factor``, denoted as $\alpha_b$ ~\cite{lee_accelerator_2011}.
+\begin{equation} 
+\label{bucket_size}
+\alpha_b(\phi_{s})\approx \frac{1-\phi_{s}}{1+\phi_{s}}
+\end{equation} 
+	\item The $2^\mathit{nd}$ time derivative of $\Delta f_\mathit{rf}$ must be small enough, so that the change rate of the synchronous phase is slow enough for the beam to follow. The $2^\mathit{nd}$ time derivative of $\Delta f_\mathit{rf}$ is reflected by the parameter of the adiabaticity $\varepsilon$ ~\cite{ezura_beam-dynamics_2008}.
+\begin{equation}
+\varepsilon \approx \frac{1}{2\omega_s}|\phi_s\dot{\phi_{s}}|
+\label{eq:derivation1}
+\end{equation} 
+where $\omega_s$ is the angular synchrotron frequency.
+\end{itemize}
+
+In order to accomplish the phase alignment as fast as possible, the phase shift will be conducted backward and forward for FAIR. Therefore a phase shift of up to $\pm \pi$ will be considered for rf systems with regard to the synchronization frequency $f_\mathit{syn}^X$. Besides, a normalized frequency modulation profile $f_{normalized}$ for $\pi$ must be precalculated, which meets the requirements mentioned above. The actual frequency modulation profile $f_{actual}$ is decided by $f_{normalized}$ and the required phase shift $\Delta \phi_\mathit{syn}$. 
+\begin{equation}
+f_{\mathit{actual}}(t)=\frac{\Delta \phi_\mathit{syn}}{\pi}f_{\mathit{normalized}}(t) \label{actual_profile}
+\end{equation}
+ 
+
+\subsubsection{Frequency beating method}
+The frequency beating method uses two slightly different synchronization frequencies. When two synchronization frequencies are slightly different, two rf systems are beating automatically. When they are identical, one (or both) rf system is detuned to achieve the beating. The frequency is detuned at constant energy by changing the radius and the magnetic field. 
+
+\begin{equation}
+\frac{\Delta{R}}{R}= - \frac{\Delta f_{\mathit{rf}}}{f_{\mathit{rf}}} 
+\label{eq:eq4}
+\end{equation}
+
+The synchronization window is defined as a symmetric time frame with respect to the time, when the phase difference between two synchronization frequencies is closest to the required phase difference, see FIG. ~\ref{frequency_beat}. The length of the synchronization window is determined by the tolerable bunch-to-bucket injection center mismatch, e.g. $\pm1^\circ$ for FAIR use cases.
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{frequency_beating.png}
+   \caption{Illustration of the frequency beating method.}{\small{Blue dots represent bunches of the source ring and red dots buckets of the target ring.}}
+   \label{frequency_beat}
+\end{figure}
+
+In conclusion, the frequency beating method is preferable for the FAIR project, because it is applicable for the B2B transfer with either an integer or non integer circumference ratio. In addition, it reduces the duration of the B2B transfer process (e.g. 10 ms is an upper bound for most FAIR use cases), because the rf frequency detune is executed during the rf acceleration ramp. For the phase shift method, the rf frequency modulation must be executed slowly enough at the rf flattop for beams to follow according to the criteria. The phase shift method therefore needs much longer time to be executed. However, there are also some advantages of the phase shift method. The synchronization window is relatively long and the B2B injection center mismatch is approximately $0^\circ$. Besides, the duration of the rf frequency modulation is known in advance and the time point for the transfer is predictable. The phase of the rf system can jump to a desired value, when there is no bunch at the ring.  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Trigger of extraction and injection kickers}
+The phase alignment provides a synchronization window, within which bunches can be transferred into buckets with the B2B injection center mismatch smaller than an upper bound (e.g. $\pm1^\circ$). This process is called ``coarse synchronization``. Furthermore, within the synchronization window the extraction kicker must kick bunches exactly the time-of-flight earlier before a specific bucket passes the injection kicker. This process is called ``fine synchronization``. The fine synchronization requires the kicker firing based on a bucket indication signal for the $1^\mathit{st}$ bucket of the target ring plus a fixed delay (e.g. the time-of-flight). The combination of two synchronization process achieves that bunches are injected into correct buckets. FIG. ~\ref{ext_inj_kicker1} illustrates two synchronization processes.
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{ext_inj_ill2.pdf}
+   \caption{Two synchronization processes.}
+{\small{The example is the FAIR use case of the B2B transfer from the CR to HESR. The frequency of the bucket indication signal equals to the HESR synchronization frequency.}}
+   \label{ext_inj_kicker1}
+\end{figure}
+
+For FAIR use cases, either $m/Y$ or $Y/m$ is an integer for $f_\mathit{syn}^{X}=Y\cdot f_\mathit{rev}^{X}/m$. In other words, either the revolution period is an integer times of the period of the synchronization frequency or the period of the synchronization frequency is an integer times of the revolution period. The bucket indication signal indicates not only the $1^\mathit{st}$ bucket of the target ring, but also the phase alignment with the rf system of the source ring, therefore the bucket indication signal, $f_\mathit{bucket}$, has the smaller value of $f_\mathit{rev}^{trg}$ or $f_\mathit{syn}^{trg}$. For example, the $H^+$ B2B transfer from SIS18 to SIS100 has $f_\mathit{bucket}=f_\mathit{rev}^{trg}$ (see FIG. ~\ref{bucket_label_occurrence}) and the B2B transfer from CR to HESR has $f_\mathit{bucket}=f_\mathit{syn}^{trg}$ (see FIG. ~\ref{bucket_label_occurrence1}). 
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{bucket_label_occurrence.jpg}
+   \caption{Frequency of the bucket indication signal equals to the revolution frequency of the target accelerator.}
+	{\textsl{\small{This example is the FAIR use case of the $H^+$ B2B transfer from the SIS18 to the SIS100. The correct phase alignment of the two rf systems is assumed with $\Delta\phi_\mathit{syn}=0^\circ$ and only the buckets with the odd number (e.g. $\sharp1$, $\sharp3$ ) are to be filled in this example.}}}
+   \label{bucket_label_occurrence}
+\end{figure}
+
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{bucket_label_occurrence1.jpg}
+   \caption{Frequency of the bucket indication signal equals to the synchronization frequency of the target accelerator.}
+	{\textsl{\small{This example is the FAIR use case of the B2B transfer from the CR to the HESR. }}}
+   \label{bucket_label_occurrence1}
+\end{figure}
+
+\subsection{Beam indication for beam instrumentation devices}
+Specific SCUs for the B2B transfer are required, including a B2B source SCU and a source trigger SCU at the source ring and a B2B target SCU and a target trigger SCU at the target ring. The B2B source SCU works as the B2B transfer master. The B2B target SCU is responsible for the phase measurement at the target ring. The source and target trigger SCUs are used to produce kicker trigger signals. The calculation of the start of the synchronization window and the distribution of it in the format of the timing message to the WR network is one of the tasks of the multi-purpose B2B source SCU. The timing message will be received by SCUs of the beam instrumentation and the corresponding devices will be activated by the timing message at the start time point of the synchronization window.

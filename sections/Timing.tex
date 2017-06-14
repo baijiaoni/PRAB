@@ -1,0 +1,113 @@
+The FAIR B2B transfer system has strict time constraints. Because beam feedback loops (e.g. the beam phase control
+loop, the bunch-by-bunch longitudinal feedback loop) must be switched off before the B2B transfer, which modify the rf system according to the actual beam, the beam may be stable only for a short period of time. For most FAIR use cases, the upper bound B2B transfer time is \SI{10}{\ms}. 
+
+The complete phase measurement needs approximately \SI{500}{\us} ~\cite{ferrand_development_nodata}. The upper bound message transfer latency of the phase measurement on the WR network from the B2B target SCU to the B2B source SCU is \SI{500}{\us}. The B2B source SCU needs about \SI{100}{\us} for the data calculation, message creation and sending. The timing message contained the start of the synchronization window need a \SI{500}{\us} transfer latency on the network to the accelerator schedule organizer, a specific SCU, and another \SI{500}{\us} further to SCUs responsible for beam instrumentation devices. The B2B transfer must start after beam instrumentation devices are activated. Hence, the start of the synchronization window must be $2 \cdot \SI{500}{\us} + \SI{100}{\us} + 2\cdot\SI{500}{\us} = \SI{2.1}{\ms}$ later than the start of the B2B transfer. 
+
+\subsection{B2B data transfer via WR network}
+In order to meet the time constraint of the B2B transfer, the data transfer on the WR network has an upper bound transfer latency of \SI{500}{us}, \SI{400}{us} of which can be used for the network transfer. Hence, the maximum number of WR switch layers between the B2B related SCUs must be defined. However, the more switches are used, the more optical fiber connections will be and the corresponding higher possibility of frame lost on the connections will happen. The maximum number of WR switch layers is constrained by the transfer latency and the tolerable lost frames. The optical fiber causes the bit error of the frame, which will be discarded by the switch. The lost frame caused by bit errors is measured by the frame error rate (FER), which is defined as the ratio between the number of lost frames caused by bit errors and the number of sent frames. 
+\begin{equation}
+\label{FER}
+	FER=n\cdot10^{-12}\cdot880
+\end{equation}
+where n is the number of WR switches used to establish the communication and the optical fiber's bit error rate is specified by the manufactures is $10^{-12}$ \footnote{Datasheet of Draka optical fbier \\ \url{http://www.drakauc.com/ucfibre-optical-patchcords/}}.  
+
+For the B2B transfer, two types of messages are involved. The $1^\mathit{st}$ type message is used to exchange data between two rings, which is sent by one SCU and received by all other B2B related SCUs, e.g. the message of the phase measurement. The bandwidth is \SI{25}{kbit/s}. The $2^\mathit{nd}$ type message is used to transfer data to the accelerator schedule organizer, which is sent by one SCU and received only by the organizer, e.g. the message of the start of the synchronization window. The bandwidth is \SI{5}{kbit/s}. Both two types have the same format as the timing message with the length of \SI{110}{bytes}. The tolerable FER is defined as one lost frame during a certain duration and calculated as 
+\begin{equation}
+	tolerable\_FER=\frac{1}{bandwith\cdot duration/880}
+\end{equation}
+
+The requirements for these two types messages are listed here.
+
+\begin{table}[!htb]
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\caption{Requirements for two B2B types messages}
+\label{dynamic_param}
+\begin{center}
+    \begin{tabular}{ | c |c | c | c | c | c | c | c |}
+    \hline
+    							& maximum latency &  \tabincell{c}{tolerable \\FER} & remark  \\ \hline
+       $1^\mathit{st}$ type	&  \SI{400}{us}  & $6.70\cdot 10^{-9}$ & \multirow{2}{*}{\parbox{3cm}{One lost frame every two months}} \\ \cline{1-3}
+       $2^\mathit{nd}$ type	&  \SI{400}{us}  & $1.34\cdot 10^{-9}$ &  \\ \hline
+    \end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{network_B2B2.jpg}
+   \caption{An overview of the Xena's Layer 2-3 test platform for the WR network.}
+ %   \caption*{\textsl{\small{Adapted from ``Testing the WR Network of the FAIR General Machine Timing System`` by C. Prados and J. Bai, 2016, GSI Internal Document. Adapted with permission.}}}
+   \label{network_B2B2}
+\end{figure}
+In the test, the Xena's Layer 2-3 test platform was used to characterize the properties of the WR network for the B2B transfer. The Xena's Layer 2-3 test platform was used to configure and generate Ethernet traffic at the data link layer and network layer and then to analyze how WR network in response. Fig. ~\ref{network_B2B2} shows an overview of the Xena's Layer 2-3 test platform for the WR network. The test platform used the 4U XenaBay chassis which was equipped with an extensive range of copper and optical Gigabit Ethernet test modules. In the test, the test modules used 18 AXGE-1254 transceivers, \SI{1.25}{Gbps} single fiber bidirectional small form-factor pluggable (SFP), to connect to ports of four WR switches via single mode fibers \footnote{A G.652.B type single mode fiber is used for the 1310 and \SI{1550}{nm} wavelength region.}. The chassis and test modules were controlled via Xena Manager-2G, a free Windows GUI client, which can be used to manage test equipment and execute test remotely. The test is used to identify the tolerable number of WR switch layers for the B2B transfer. 
+
+According to the importance of the network traffic, the prioritization of WR network traffic is implemented based on the virtual LAN (VLAN) technology. Control messages must be delivered deterministically and with very low loss, which schedules the real-time acceleration cycle. Hence, they are assigned to a VLAN with the highest priority, as well as the $2^\mathit{nd}$ type B2B message. Besides, messages used for the B2B related data exchange are assigned to a specific B2B VLAN with the secondary priority in order to reduce the network traffic. In addition, management messages are assigned to another VLAN with the lowest priority~\cite{prados_testing_2016}. For more details of the traffic produced by XenaBay ports, please see Appendix I.
+
+
+The $1^\mathit{st}$ type B2B messages are produced by one XenaBay's port and transferred via all four WR switches. After each switch, messages are received by another XenaBay's port. The transfer latency of the message via different number of switch layers is measured. TAB. ~\ref{max latency jitter} shows the 45 days test result.
+\begin{table}[!htb]
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\caption{Maximum frame transfer latency of the $1^\mathit{st}$ type B2B messages}
+\label{max latency jitter}
+\begin{center}
+    \begin{tabular}{ | c | c | c | c | c | c | }
+    \hline
+     \tabincell{c}{Number of switch layers} & \tabincell{c}{one}  & \tabincell{c}{two} &\tabincell{c}{three} &\tabincell{c}{four} \\ \hline
+       \tabincell{c}{Maximum transfer latency} & \SI{28}{\us} & \SI{34}{\us} & \SI{37}{\us} & \SI{41}{\us}\\ \hline
+	%	\tabincell{c}{Max \\ jitter} & \SI{25}{\us} & \SI{25}{\us} & \SI{27}{\us} & \SI{30}{\us}\\ \hline
+    \end{tabular}
+\end{center}
+\end{table}
+
+The $2^\mathit{nd}$ type B2B messages are produced by one XenaBay's port and transferred via all four WR switches to another XenaBay's port. The transfer latency of the message via four switch layers, \SI{23}{\us}, is measured in the 45 days test.
+
+Based on the transfer latency requirement, the tolerable number of switch layers for the $1^\mathit{st}$ and $2^\mathit{nd}$ type B2B messages are calculated as
+\begin{equation}
+		\frac{\SI{400}{\us}}{\SI{28}{\us/switch}}>13
+\end{equation}
+\begin{equation}
+		\frac{\SI{400}{\us}}{\SI{23}{\us/switch}}\cdot 4 > 67
+\end{equation}
+
+According to the FER requirement, the maximum number of switch layers for two types are calculated by eq. ~\ref{FER}.  
+\begin{equation}
+n_{1^{st}}=\frac{FER}{880\cdot10^{-12}}=\frac{6.70\cdot 10^{-9}}{880\cdot10^{-12}}\approx 8
+\end{equation}
+\begin{equation}
+n_{2^{nd}}=\frac{FER}{880\cdot10^{-12}}=\frac{1.34\cdot 10^{-9}}{880\cdot10^{-12}}\approx 38
+\end{equation}
+
+The FER requires less number of WR switch layers compared with the result from the transfer latency requirement. Hence, the maximum number of switch layers for two types messages are 8 and 38, when one lost frame is tolerable every two months. 
+
+%\begin{table}[!htb]
+%\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+%\caption{Traffic produced by the XenaBay ports of the test setup}
+%    \caption*{\textsl{\small{Adapted from ``Testing the WR Network of the FAIR General Machine Timing System`` by C. Prados and J. Bai, 2016, GSI Internal Document. }}}
+%\label{test_setup_network}
+%\begin{center}
+%    \begin{tabular}{ | c | c | c | c | c | c | c | c | }
+%    \hline
+%	  \rowcolor[gray]{0.5}
+%     \tabincell{c}{Switch} & \tabincell{c}{XenaBay \\ Port} & \tabincell{c}{Traffic} & \tabincell{c}{Ethernet \\frame size\\(bytes)}&\tabincell{c}{ VLAN} &\tabincell{c}{Priority} &\tabincell{c}{Usage}\\ \hline
+%       \multirow{6}*{{\tabincell{c}{WR \\switch \\ 1}}}& Port 1 & \SI{100}{Mbit/s} &110  & 7 & 7 & DM Broadcast \\ \cline{2-7}
+%		 &Port 2 &  &  &  &  &\\ \cline{2-7}
+%		 &Port 3 &\SI{10}{Mbit/s} &110  & 7 & 7 & DM Unicast \\ \cline{2-7}
+%   		 &Port 4 &  &  &  & & \\ \cline{2-7}
+%		 &Port 5 &  &  &  & & \\ \cline{2-7}
+%		 &Port 6 & \SI{1}{Mbit/s} &64 - 1518  & 5 & 5 &  \tabincell{c}{Management \\ Broadcast} \\ \hline
+%    \multirow{4}*{{\tabincell{c}{WR \\switch \\ 2}}}& Port 7 & \SI{2}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management \\ Broadcast} \\ \cline{2-7}
+%	& Port 8 &  &  &  & &\\ \cline{2-7}
+%	& Port 9 &  &  &  & &\\ \cline{2-7}
+%   & Port 10 & \SI{1}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management \\ Broadcast} \\ \hline
+%	\multirow{4}*{{\tabincell{c}{WR \\switch \\ 3}}}& Port 11 &  &  &  &  &\\ \cline{2-7}
+%	& Port 12 &  &  &  & & \\ \cline{2-7}
+%   & Port 13 & \SI{2}{Mbit/s} &64 - 1518& 5 & 5 &  \tabincell{c}{Management \\ Broadcast} \\ \cline{2-7}
+%	& Port 14 & \SI{1}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management \\ Broadcast} \\ \hline
+%	\multirow{4}*{{\tabincell{c}{WR \\switch \\ 4}}}& Port 15 & \SI{1}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management \\ Broadcast} \\ \cline{2-7}
+%   & Port 16 & \SI{25}{kbit/s} &110  & 6 & 6 & B2B Broadcast \\ \cline{2-7}
+%	& Port 17 & \SI{5}{kbit/s} &110  & 7 & 7 & B2B Unicast \\ \cline{2-7}
+%	& Port 18 & \SI{2}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management \\ Broadcast} \\ \hline
+%    
+%    \end{tabular}
+%\end{center}
+%\end{table}

@@ -1,0 +1,440 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage[]{units}
+\usepackage{siunitx}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+
+\preprint{APS/123-QED}
+
+\title{Development of the Timing System for the Bunch-to-Bucket Transfer between the FAIR Accelerators}% Force line breaks with \\
+
+\author{J.Bai$^{1,2}$}
+ \altaffiliation[Email: ]{J.bai@gsi.de}%Lines break automatically or can be forced with \\
+\author{O.Kester$^{1,2}$, R.B$\ddot{a}$r$^{1}$, D.Ondreka$^{1}$, T.Ferrand$^{1,3}$, M.Kreider$^{1}$, C.Prados$^{1}$,\\ S.Rauch$^{1}$, W.Terpstra$^{1}$, and M.Zweig$^{1}$}%
+
+\affiliation{
+1. GSI Helmholtzzentrum f$\ddot{u}$r Schwerionenforschung, 64291 Darmstadt, Germany
+\\2. IAP, Goethe University Frankfurt am Main, 60439 Frankfurt am Main, Germany \\
+3. TEMF, Technique University Darmstadt, 64291 Darmstadt, Germany}%
+
+
+\begin{abstract} rework !!! In case of a "bunch to bucket transfer" between two synchrotrons, after accelerating to the top energy, a bunch of particles will be extracted from the source synchrotron to be injected at the center of a RF bucket of the target synchrotron without the phase and energy error. For FAIR accelerator complex, the synchronization process is supported by the General Machine Timing (GMT) system and the Bunch phase Timing System (BuTiS). The frequency beating method based on the RF frequency de-tune is adopted to realize this process. The RF frequency de-tune means that the particles run at an average radius different from the designed orbit, during which the energy keeps constant and the bending magnetic reacts. After the de-tune process, the relative RF phase of the two synchrotrons begins to slip at a repetition rate of the absolute value of the difference in two RF frequencies, which is the so-called frequency beating method. For the bunch to bucket transfer from the SIS18 to the SIS100, this method achieves the accuracy of the synchronization better than 0.5$^\circ$.
+
+\begin{description}
+%\item[Usage]
+%Secondary publications and information retrieval purposes.
+\item[PACS numbers]
+29.20.D-. 29.27.Ac. 07.05.Dz
+
+\end{description}
+\end{abstract}
+
+\pacs{Valid PACS appear here}% PACS, the Physics and Astronomy
+                             % Classification Scheme.
+%\keywords{Suggested keywords}%Use showkeys class option if keyword
+                              %display desired
+\maketitle
+
+%\tableofcontents
+
+\section{\label{sec:introduction}INTRODUCTION}
+\input{sections/Introduction}
+
+\section{\label{sec:concept}CONCEPT}
+\input{sections/Concept}
+
+\section{\label{sec:dynamics}BEAM DYNAMICS ANALYSIS OF TWO SYNCHRONIZATION METHODS}
+\input{sections/Dynamics}
+
+\section{\label{sec:testsetup}TIME CONSTRAINT}
+\input{sections/Timing}
+
+\subsection{\label{sec:testsetup}Firmware running on LM32}
+\input{sections/Testsetup}
+
+%\section{\label{sec:WRnetwork}B2B DATA TRANSFER VIA WHITE RABBIT NETWORK}
+%\input{sections/WR_network}
+
+\section{\label{sec:kicker}SIS18 EXTRACTION AND SIS100 INJECTION KICKER TRIGGER SCENARIO}
+\input{sections/Kicker}
+
+
+
+\section{\label{sec:application}APPLICATION}
+\input{sections/Application}
+
+\section{\label{sec:application}CONCLUSION}
+\input{sections/Conclusion}
+
+\section{\label{sec:application}ACKNOWLEDGMENTS}
+\input{sections/Acknowledgments}
+
+
+%  After a bunch of particles is accelerated to the top energy, it must be extracted from the source synchrotron to be injected at, or at least be close to, the center of a bucket of the target synchrotron without the phase and energy error. e.g. From the SIS18, four batches\cite{batch} of the $U^{28+}$ at 200 MeV/u, each of two bunches (h = 2),  are injected into eight out of ten buckets of the  SIS100\cite{SIS18_100}
+%\cite{SIS18} (see Fig.~\ref{fig1}). 
+%
+%\begin{figure}[!htb]
+%   \includegraphics[width=85mm]{2to8.png}
+%   \caption{The bunch to bucket transfer of U$^{28+}$ from the SIS18 to the SIS100.}
+%   \label{fig1}
+%\end{figure}
+% 
+%  For properly transferring the beam from the source synchrotron to the target synchrotron, the phase between the beam and the bucket must be precisely controlled before it is ejected. The process of achieving the detailed phase adjustment is termed "synchronization". There are mainly two methods to realize the synchronization: the phase shift and the frequency beating, both of which are based on the RF frequency modulation. To achieve the a required phase shift, the RF frequency is modulated away from the a nominal value for a period of time and then modulated back. The frequency beating is an comparison between two RF signals of slightly different frequencies, perceived as periodic variations in phase difference [0, 2$\pi$] whose rate is the difference between the two frequencies. 
+%
+%  We prefer to use the frequency beating method to realize the synchronization for the SIS18 and the SIS100, which has more synchronization chances compared with just once of the phase shift method. Fig.~\ref{fig2} shows the schematic of the synchronization process in one SIS18 cycle. A broad description of the synchronization process is as follows. On the RF ramp of the source synchrotron, the RF frequency de-tune is achieved. After receiving the timing event (e.g. "Synchronization begin") from the timing network, the TR which is coupled to the RF system then informs the RF device to collect information, including the RF frequency, the harmonic number, the phase difference between the RF signal and the reference signal and the timestamp of the zero crossing point of RF signal h = 1. After collection data, the RF device transfers data to the TR. Then the TR sends data to the TR of the SIS100 via the timing network. At the same time, the SIS100 does the same procedures. Until now, both synchrotrons have all information for the synchronization so that they are able to calculate the propagation of uncertainties~\cite{error_propogation} of the phase difference measurement, the coarse window. Besides, both synchrotrons resynchronize the RF signals of each other locally. With the help of the coarse window and the resynchronized RF signals, both synchrotrons trigger their kickers with precision better than 0.5$^\circ$, which makes the RF frequency beating method possible.
+%
+%\begin{figure}[!htb]
+%   \centering
+%   \includegraphics*[width=90mm]{sketch.png}
+%   \caption{The schematic of the synchronization process in one SIS18 cycle.}
+%   \label{fig2}
+%\end{figure}
+%
+%  This paper, does not contain a detailed technical description of the synchronization process, rather is devoted to demonstrating the RF frequency de-tune from the viewpoint of beam dynamics and the theory of the frequency beating method instead, especially focusing on the bunch to bucket transfer from the SIS18 to the SIS100.
+%
+%
+%
+%\section{\label{sec:level1}Beam-dynamics view of the Frequency De-tune}
+%
+%  The first step for the bunch to bucket transfer is the RF frequency de-tune. In order to realize the frequency beating between two synchrotrons, the RF frequency of the source synchrotron or the target synchrotron or both synchrotrons can be de-tuned. It means that the particles on the de-tuned synchrotron run at an average radius different by $\bigtriangleup$R from the designed orbit R. For the synchronization of the SIS18 and the SIS100, we will de-tune the RF frequency on the SIS18. The SIS18 operates with a cycle length of 520ms, harmonic number of 2 ( h = 2 ), and RF frequency of approximately 0.43 MHz at injection and approximately 1.57 MHz at ejection for the $U^{28+}$~\cite{SIS18}. During nominal operation, the SIS18 forms two bunches from the beam injected at 11.4 MeV/$\mu$ and accelerates them up to 200 MeV/$\mu$. From the SIS18, 4 batches, each of 2 bunches, are transferred at  maximum 10ms intervals to the SIS100. The harmonic number of the SIS100 is 10 and the SIS100 RF frequency is fixed at approximately 1.57 MHz during the
+%injection period to simplify the RF control system and to avoid perturbing batches already transferred.
+%
+%  This RF frequency de-tune is done accompanying with the RF ramp. Accepting to decentre the orbit by 8mm for the SIS18~\cite{SIS18_man}: 
+%
+%\begin{equation}
+%\frac{\bigtriangleup{R}}{R}\approx{2.4}{\times}10^{-4}\label{eq1}
+%\end{equation}
+%
+%  We know the basic differential relations among the fractional change in the RF frequency f, the fractional change in the momentum p, the fractional change in the bending magnetic field B and the fractional change in the radius R as follows ~\cite{J-PARC}.
+%
+%
+%\begin{equation}
+%\label{eq:eq2}
+%\frac{\Delta{f}}{f} ={\frac{1}{\gamma^2}}{\frac{\Delta{p}}{p}} - \frac{\Delta{R}}{R}
+%\end{equation}
+%
+%\begin{equation}
+%\frac{\Delta{f}}{f} = (\frac{1}{\gamma^2}-\frac{1}{\gamma_t^2})\frac{\Delta{p}}{p}+{\frac{1}{\gamma_t^2}}{\frac{\Delta{B}}{B}}
+%\label{eq:eq3}
+%\end{equation}
+%
+%
+%  where $\gamma$ is the relativistic factor, which measures the total particle energy, E, in
+%units of the particle rest energy, $E_0$; $\gamma_t$ is the transition gamma; $\bigtriangleup{f}$ and  $\bigtriangleup{B}$ are the frequency and  bending magnetic field deviation for the frequency de-tune;  $\bigtriangleup{p}$ is the momentum deviation.
+%
+%  For J-PARC synchronizing the RCS (Rapid-Cycling Synchrotron)  with the MR (Main Ring) or the MLF (Materials and Life Science Facility), the RF phase shift of the RCS is adopted~\cite{J-PARC}. To achieve a required phase shift, the RF frequency is modulated away from the required value for a period of time and then modulated back, when the extraction and injection energy match again.  During its synchronization process, the magnetic field is not affected by the frequency change, namely $\Delta$B = 0. 
+%
+%  In our case of the frequency beating method, we guarantee the extraction and injection energy always match, which means that the momentum is not affected by the frequency change, namely $\Delta$p = 0; then the general relation between the radial excursion and RF frequency change Eq.~(\ref{eq:eq2}) reduces to Eq.~(\ref{eq:eq4}) and the general relation between the magnetic field change and RF frequency change Eq.~(\ref{eq:eq3}) reduces to Eq.~(\ref{eq:eq5}).
+%
+%\begin{equation}
+%\frac{\Delta{f}}{f} = - \frac{\Delta{R}}{R}
+%\label{eq:eq4}
+%\end{equation}
+%
+%\begin{equation}
+%\frac{\Delta{f}}{f} =  \frac{1}{{\gamma_t}^2}\times{\frac{\Delta{B}}{B}}
+%\label{eq:eq5}
+%\end{equation}
+%
+%From these equations, the RF frequency and the magnetic field change at the $U^{28+}$  extraction energy 200MeV/u~\cite{SIS18_man} ($\gamma_t$ = 5.8) are 
+%
+%\begin{equation}
+%\frac{\Delta{f}}{f} = -{2.4}{\times}10^{-4}
+%\label{eq6}
+%\end{equation}
+%
+%\begin{equation}\frac{\Delta{B}}{B} = -{8.1}{\times}10^{-3}\label{eq5}
+%\end{equation}
+%
+%where the maximum RF frequency de-tune is approximate to 370 Hz at 1.57 MHz for the $U^{28+}$. In this paper, we assume Rf frequency de-tune for the SIS18 equals to 200 Hz for the sake of simplicity.
+%
+%\section{\label{sec:level1}Synchronization of two machines}
+%
+%The second step for the bunch to bucket transfer is the synchronization of two synchrotrons using the frequency beating method. After the RF frequency de-tunes on the source synchrotron, the relative rf phase of the two synchrotrons begins to slip at a repetition rate of the absolute value of the difference in two RF frequency. When the correct amount of phase is accumulated, the bunch of the source synchrotron will align or be cogged with the bucket of the target synchrotron.
+%
+%\subsubsection{The test setup}
+%
+%Because the RF device is still under development, we use two MODEL DS345 Synthesized Function Generators~\cite{FG} with the frequency accuracy of $\pm$5 ppm of the selected frequency to simulate RF signals from RF cavities of the SIS18 and the SIS100. Two TRs, the FPGA-based cards, are responsible for the time/phase measurement, information transmission and coarse window calculation. (see Fig.~\ref{fig3})
+%
+%\begin{figure}[!htb]
+%   \centering
+%   \includegraphics*[width=90mm]{2pexaira.jpg}
+%   \caption{The test setup for the bunch to bucket transfer.}
+%   \label{fig3}
+%\end{figure}
+%
+%\subsubsection{The frequency beating method}
+%
+%Here we still assume that the source synchrotron is the SIS18 and the target synchrotron is the SIS100. The RF frequency of the SIS18 is denoted by $f_{rf}^{SIS18}$ and that of the SIS100 by $f_{rf}^{SIS100}$. ${\bigtriangleup{f}}$ is the RF frequency de-tune value of the SIS18. n is the number of the SIS100 revolution period to realize the synchronization. $t_{18best}$ and $t_{100best}$ are the timestamps of the zero-crossing point of the RF signals measured by the TRs. According to the measurement results, there are two scenarios.
+%
+%\begin{itemize}
+%    \item  $t_{18best} < t_{100best}$
+%    \begin{equation}
+%   t_{100best}+{n}\times{\frac{1}{f_{rf}^{SIS100}}}=t_{18best}+{(n+1)}\times{\frac{1}{(f_{rf}^{SIS18}+{\bigtriangleup{f}})}}
+%   \end{equation}
+%    \item  $t_{18best} > t_{100best}$
+%    \begin{equation}
+%   t_{100best}+{n}\times{\frac{1}{f_{rf}^{SIS100}}}=t_{18best}+{n}\times{\frac{1}{(f_{rf}^{SIS18}+{\bigtriangleup{f}})}}
+%   \end{equation}
+%\end{itemize}
+%
+%
+%Based on these two scenarios, we could deduce the formulas for the number of the SIS100 revolution n and the time  $t_{syn}$ spend on the synchronization.
+%
+%\begin{equation}
+%n=\frac{t_{100best}-t_{18best}-\frac{\bigtriangleup{n}}{f_{rf}^{SIS18}+{\bigtriangleup{f}}}}{\frac{1}{f_{rf}^{SIS18}+{\bigtriangleup{f}}}-\frac{1}{f_{rf}^{SIS100}}}\label{eq6}
+%\end{equation}
+%
+%\begin{equation}
+%t_{syn}=\frac{(f_{rf}^{SIS18}+{\bigtriangleup{f}})\times{t_{18best}}-f_{rf}^{SIS100}\times{t_{100best}}+{\bigtriangleup{n}}}{(f_{rf}^{SIS18}+{\bigtriangleup{f}})-f_{rf}^{SIS100}}\label{eq7}
+%\end{equation}
+%
+%where $\bigtriangleup{n}$ equals 1 when  $t_{18best} < t_{100best}$ and equals 0 when  $t_{18best} > t_{100best}$.
+%
+%\subsubsection{The coarse window and an example}
+%
+%The coarse window is the result of the propagation of uncertainties of the phase difference measurements. The uncertainties in $f_{rf}^{SIS18}$, $f_{rf}^{SIS100}$, $t_{18best}$ and $t_{100best}$ are independent and random, then the uncertainty~\cite{error_propogation} in the synchronization time $t_{syn}$ is
+%
+%\begin{widetext}
+%\begin{equation}
+%\delta {t_{syn}}=\sqrt{(\frac{\partial{t_{syn}}}{\partial{t_{18best}}}{\delta{t_{18}}})^{2}+(\frac{\partial{t_{syn}}}{\partial{t_{100best}}}{\delta{t_{100}}})^{2}+(\frac{\partial{t_{syn}}}{\partial{f_{rf}^{SIS18}}}{\delta{f_{rf}^{SIS18}}})^{2}+(\frac{\partial{t_{syn}}}{\partial{f_{rf}^{SIS100}}}{\delta{f_{rf}^{SIS100}}})^{2}} 
+%\label{eq:coarse}
+%\end{equation}
+%\end{widetext}
+%
+%
+%After calculation, we get the result of $\delta$$t_{syn}$
+%
+%\begin{align*}
+%&A=\frac{(f_{rf}^{SIS100})^2+(f_{rf}^{SIS18}+\bigtriangleup{f})^2}{\bigtriangleup{f}^2}\nonumber\\
+%&B=\frac{2\times{[(f_{rf}^{SIS18}+\bigtriangleup{f})\times(t_{18best}-t_{100best})+{\bigtriangleup{n}}]^2}}{\bigtriangleup{f}^4}\nonumber\\
+%&C=\frac{2\times{(f_{rf}^{SIS18}+\bigtriangleup{f})}\times(t_{18best}-t_{100best})^2}{\bigtriangleup{f}^3}+\nonumber\\
+%&      \frac{2\times{\bigtriangleup{n}}\times(t_{18best}-t_{100best})}{\bigtriangleup{f}^3}\\
+%&D=\frac{(t_{18best}-t_{100best})^2}{\bigtriangleup{f}^2}\nonumber\\
+%\end{align*}
+%\begin{equation}
+%\delta {t_{syn}}=(A\times\delta{t}^2+B\times\delta{f}^2-C\times\delta{f}^2+D\times\delta{f}^2)^{\frac{1}{2}}\label{eq8}
+%\end{equation}
+%
+%where we assume that $f_{rf}^{SIS18}$=$f_{rf}^{SIS100}$ = 1.57 MHz, the RF frequency of the flattop of the SIS18 and of the injection of the SIS100 for the $U^{28+}$, $\bigtriangleup{f}$=200 Hz. In the real situation, the uncertainty of the phase difference measurement from the RF device is 50 ps, $\delta$$t_{18}$ = $\delta$$t_{100}$ = $\delta{t}$ = 50 ps. Because the RF frequency has the long term stability in the real RF system, $\int\delta{f_{rf}^{SIS18}}dt$ = $\int\delta{f_{rf}^{SIS100}}dt$ = 0. 
+%
+%Based on these assumptions, the coarse window is $\pm$\unit[0.55][$\mu$s] of the best estimation. The maximum time for the synchronization is 
+%
+%
+%\begin{equation}
+%\frac{1}{\Delta{f}} = \frac{1}{200 Hz} = 5 ms\label{eq9}
+%\end{equation}
+%
+%Based on this window, we make use of the first SIS100 revolution signal after the $t_{syn}$ - 0.55us and the following SIS18 revolution signal to trigger kickers. In order to guarantee that each bucket has opportunity to be injected, the whole period of the first SIS100 revolution signal is available. So the accuracy within this period is better than 0.5$^\circ$
+%
+%\begin{equation}
+%{\frac{6.4 \mu s}{5ms}}\times {360^\circ} \approx 0.46^\circ\label{eq9}
+%\end{equation}
+%
+%Where 6.4 $\mu$s is the revolution period of the SIS100.
+%\begin{equation}
+%\frac{1}{f_{rf}^{SIS100}}\times {h} = \frac{1}{1.57 MHz}\times {10} = 6.4 \mu s \label{eq10}
+%\end{equation}
+%
+%\subsubsection{Test result}
+%This setup theoretically simulates the synchronization of two synchrotrons, with accuracy better than 0.5$^\circ$ (see Table~\ref{tab:table1}). It paves the way for the further FAIR bunch to bucket transfer. \\
+%
+%\begin{table}[]
+%\caption{The test result of the bunch to bucket transfer}
+%\begin{ruledtabular}
+%\begin{tabular}{ll}
+%\label{tab:table1}
+%Bunch to Bucket Transfer of  $U^{28+}$ from SIS&18 to SIS100\\
+%\hline
+%SIS18 RF frequency ( h = 2 )& 1.57 MHz \\
+%SIS100 RF frequency ( h = 10 ) & 1.57 MHz\\
+%
+%The RF frequency de-tune of SIS18 & 200 Hz\\
+%The phase difference in the time domain & 577 ns\\
+%The number of SIS100 revolution for\\  the synchronization ( n ) & 7112\\
+%
+%The time consumption for the \\  synchronization & 4.530 ms\\
+%
+%The synchronization period & 5 ms\\
+%The coarse window  & 0.56 $\mu s$\\
+%The accuracy within one SIS100\\  revolution period  & 0.45$^\circ$\\
+%
+%\end{tabular}
+%\end{ruledtabular}
+%\end{table}
+%
+%\section{\label{sec:level1}Summary}
+%The frequency beating method based on the RF frequency de-tune realizes the synchronization process between the SIS18 and the SIS100. It will be used for the synchronization of other machines for FAIR, such as the synchronization between the SIS18 and the ESR, the CR and the HESR and so on. 
+%
+%\begin{acknowledgments}
+%The author would like to thank all staff in the department of control systems of GSI for their patient guidance, enthusiastic encouragement and useful critiques of the research work. The author would also like to thank staff from the Department Ring RF Systems to provide useful information about the RF system. The grateful thanks are also extended to Peter Moritz for his support.
+%\end{acknowledgments}
+%
+%\appendix
+%
+%\section{The parameters related to the bunch to bucket transfer from the SIS18 to the SIS100}
+%\begin{table*}
+%\caption{\label{tab:table3}All parameters related to the bunch to bucket transfer for Radioactive Ion Beam (RIB) from the SIS18 to the SIS100}
+%\begin{ruledtabular}
+%\begin{tabular}{lccc}
+%&&RIB\\ \hline
+%&&SIS18 Extraction&SIS100 Injection\\ \hline
+%Designed Orbit&m&216.72&1083.6\\
+%Extraction kinetic energy&Mev/u&200&\\
+%Injection kinetic energy&Mev/u&&200\\
+%RF harmonic &&2&10 ({2 bunch}$\times${4 batches})\\
+%RF frequency&MHz&1.572&1.572\\
+%RF period&$\mu$s&0.636&0.636\\
+%Revolution frequency&MHz&0.786&0.157\\
+%Revolution period&$\mu$s&1.272&6.359\\
+%$\beta$&&0.568&0.568\\
+%$\gamma$&&1.215&1.215\\
+%Transition energy $\gamma_t$&&5.8&\\
+%Momentum compaction $\alpha_p$&&0.030&\\
+%$\Delta$R/R&&{$\pm$2.4}$\times{10^{-4}}$&\\
+%Max $\Delta$f/f&&$\pm$0.024$\%$&\\ 
+%$\Delta$p/p&&&1$\%$\\ \hline
+%&&Synchronization process\\ \hline
+%Beating frequency&MHz&1.572+0.2&1.572\\
+%Frequency difference&Hz&200\\
+%Synchronization period&$\mu$s&5&5\\
+%$\Delta$f/f by the frequency de-tune&&0.013$\%$&\\
+%
+%Injection precison&&&better than $1^o$\\
+%
+%
+%\end{tabular}
+%\end{ruledtabular}
+%\end{table*}
+%
+%
+%\begin{thebibliography}{99} 
+%
+%\bibitem{GMT_system}
+%	D. Beck, R. B$\ddot{a}$r, M. Kreider, C. Prados, S. Rauch, W. Terpstra and M. Zweig ,
+%	\textit{THE NEW WHITE RABBIT BASED TIMING SYSTEM FOR THE FAIR FACILITY},
+%	PCaPAC'12, India, p.~242, (2012)
+%
+%\bibitem{GMT_BuTiS}
+%	D. Beck, 
+%     \textit{Interface to BuTiS},
+%	\url{https://www-acc.gsi.de/wiki/Timing/TimingSystemButisInterface}
+%
+%\bibitem{WR}
+%	D. Beck, R. B$\ddot{a}$r, T. Fleck, M. Kreider, S. Mauro, C. Prados, S. Rauch, W. Terpstra and M. Zweig, 
+%     \textit{White Rabbit Technology as Basis for the FAIR Timing System}
+%	GSI Scientific Report 2011, p.~333, (2011)
+%
+%\bibitem{BuTis}
+%	P. Moritz,
+%	\textit{BuTiS - Development of a Bunchphase Timing System},
+%	GSI Scientific Report 2006, p.~64, (2007)
+%
+%\bibitem{batch}
+%	G. Dugan,
+%	\textit{Considerations of BunchSpacing Options for Multi-Bunch Operation of the Tevatron Collider},
+%	Fermi National Accelerator Laboratory, p.~1, (1989)
+%
+%
+%\bibitem{SIS18_100}
+%     D. Ondreka,
+%	\textit{Settings Generation for the RF Systems in FAIR},
+%	GSI/CERN Meeting 2014
+%
+%\bibitem{SIS18_man}
+%     H. Liebermann, D. Ondreka,
+%	\textit{FAIR and GSI Reference Cycles for SIS18},
+%	GSI, October 3, 2013
+%
+%\bibitem{J-PARC}
+%     Eizi EZURA, Masahito YOSHII,
+%	\textit{BEAM-DYNAMICS VIEW OF RF PHASE ADJUSTMENT FOR SYNCHRONIZING J-PARC RCS WITH MR},
+%	High Energy Accelerator Research Organization, Japan, June, 2008
+%
+%\bibitem{error_propogation}
+%    John R. Taylor,
+%    \textit{AN INTRODUCTION TO Error Analysis} 
+%    University Science Books, Sausalito, California, 1997
+%
+%\bibitem{SIS18}
+%    H Liebermann, D. Ondreka,
+%    \textit{FAIR and GSI Reference Cycles for SIS18} 
+%    Primary Beams - System Planning, Sausalito, GSI, 2013 
+%
+%\bibitem{FG}
+%     Stanford Research Systems,
+%	\textit{MODEL DS345 Synthesized Function Generator}
+%
+%\bibitem{DSP}
+%      H. Klingbeil,
+%      \textit{Low-Level-RF (LLRF) Systems for FAIR Synchrotron and Storage Ring Cavities},
+%      FAIR-Technikforum, November.11.2010
+%\addtocounter{enumi}{5}
+%
+%
+%\end{thebibliography}
+
+
+\end{document}
+

@@ -1,0 +1,39 @@
+The test setup is used to check whether the B2B firmware running on the soft CPU, LatticeMico32\footnote{LatticeMico32 is a 32-bit microprocessor soft core from Lattice Semiconductor optimized for field-programmable gate arrays (FPGA).} (LM32) of the SCU, meets the time constraints of the B2B transfer system.  
+
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=85mm]{schematic_setup.jpg}
+   \caption{Schematic of the test setup.}
+   \label{setup}
+\end{figure}
+Fig.~\ref{setup} shows the schematic of the test setup. In this test setup, two SRS MODEL DS345 Synthesized Function Generators\footnote{The DS345 Synthesized Function Generator is a full-featured \SI{30}{\MHz} synthesized function generator that uses an innovative Direct Digital Synthesis architecture. It generates many standard waveforms with excellent frequency resolution (1 $\mu$Hz) and has versatile modulation capabilities including AM, FM, Burst, PM and frequency sweeps.} (short: DS345) were used to simulate the rf systems of the SIS18 and SIS100. The two DS345s needed to be synchronized to a common reference clock. For simplicity, the DS345 of the SIS100 used a \SI{10}{\MHz} clock from the DS345 of the SIS18 as an external reference clock. The B2B source SCU, the B2B target SCU and the Trigger SCU were connected to a WR switch via single mode fibers\footnote{A G.652.B type single mode fiber is used for the 1310 and \SI{1550}{nm} wavelength region.}, which connected to the WR network. There was a SCU slave in the B2B source SCU. A personal computer (PC) was connected to the WR network, which was a Linux PC installed with the FEC tools \footnote{FEC tools include the etherbone tools, the saftlib tools and the Linux drivers. \\ \url{https://www-acc.gsi.de/wiki/Timing/TimingSystemHowConfigureEnvironment}}, the Altera's Quartus II software and the packETH software. The SCUs were connected to the PC via the Altera USB-Blaster Joint Test Action Group (JTAG) programmer. The PC was used to simulate the accelerator schedule organizer to produce the B2B start timing message. Besides, the PC monitored the status of the firmware in all SCUs and measured the running time of the firmware by the SignalTap II Logic Analyzer\footnote{The SignalTap II Logic Analyzer is a system-level debugging tool that captures and displays signals in circuits designed for implementation in Altera’s FPGAs.} feature within the Quartus II software. Fig.~\ref{testsetup_text} shows the front view of the test setup. From a functional perspective, the test setup simulates that the B2B source SCU collects data from the B2B target SCU, the B2B source SCU calculates the start of the synchronization window and the B2B source SCU distributes the start of the synchronization window to the Trigger SCU. 
+%testsetup.odg
+\begin{figure}[!htb]
+   \centering   
+   \includegraphics*[width=65mm]{testsetup_text.jpg}
+   \caption{Front view of the test setup.}
+   \label{testsetup_text}
+\end{figure}
+
+The running time of the firmware was measured by the SignalTap II Logic Analyzer.
+
+\begin{table}[!htb]
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\caption{Running time of the tasks of the B2B source SCU firmware}
+\label{execution_time}
+\begin{center}
+    \begin{tabular}{ | c |c | c | c | c | c | c | c |}
+    \hline
+     Task & \tabincell{c}{Average \\running \\time} & \tabincell{c}{Worst-case
+\\running\\ time}  \\ \hline
+
+      \tabincell{c}{LM32 uses polling to check the \\reception of the message in a queue} & \SI{336}{\ns} & \SI{336}{\ns}\\ \hline
+      \tabincell{c}{LM32 reads from/writes \\to the SCU slave} & \SI{450}{\ns} & \SI{450}{\ns}\\ \hline
+      \tabincell{c}{LM32 reads parameters \\contained in a message} & \SI{2.7}{\us} & \SI{2.7}{\us}\\ \hline
+     \tabincell{c}{LM32 calculates the start\\of the synchronization window} & \SI{12.6}{\us}& \SI{12.8}{\us} \\ \hline
+     \tabincell{c}{LM32 sends a message \\to the WR network} & \SI{3.2}{\us} & \SI{3.2}{\us}\\ \hline
+
+    \end{tabular}
+\end{center}
+\end{table}
+
