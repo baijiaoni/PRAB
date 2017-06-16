@@ -46,7 +46,9 @@
 \usepackage[]{units}
 \usepackage{siunitx}
 \usepackage{pdfpages}
+\usepackage{longtable}
 
+\usepackage{lipsum}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
@@ -84,7 +86,7 @@
 \begin{abstract} 
 The Facility for Antiproton and Ion Research (FAIR) project is aiming at providing high-energy beams of ions of all elements
 from hydrogen to uranium, as well as antiprotons and rare isotopes with high intensities. The existing accelerator facility of GSI  Helmholtz center for Heavy Ion Research GmbH (short: GSI) and the future FAIR facility employ a variety of circular accelerators like heavy ion synchrotrons (the SIS18 and the
-SIS100) and storage rings (the experimental storage ring ESR, the CRYRING@ESR, the collector ring CR and the high energy storage ring HESR) for the preparation of secondary beams and experiments. Bunches are required to be transferred into rf buckets among GSI and FAIR ring accelerators for different purposes. All this imposes new requirements on the bunch-to-bucket transfer system. These requirements include the bunch-to-bucket transfer between two rings with an arbitrary ratio in their circumference, two synchronization methods (the phase shift method and the frequency beating method), the required bunch-to-bucket transfer time \SI{10}{\ms}, the tolerable bunch-to-bucket injection center mismatch less than $\pm1^\circ$ and the primary beam transfer as well as the secondary beam. In order to fulfill these requirements, a completely new and unique FAIR bunch-to-bucket transfer system will be developed. The presentation of the concept of the system and the systematic investigation from timing perspective are the purpose of this paper. The concept and basic procedure of the system first of all are presented. Afterwards, a systematic investigation from the beam dynamics, timing requirement of the transfer and kicker trigger perspectives is analyzed. Finally, the application of the system for all FAIR use cases with the frequency beating method is summarized.
+SIS100) and storage rings (the experimental storage ring ESR, the CRYRING@ESR, the collector ring CR and the high energy storage ring HESR) for the preparation of secondary beams and experiments. Bunches are required to be transferred into rf buckets among GSI and FAIR circular accelerators for different purposes. All this imposes new requirements on the bunch-to-bucket transfer system. These requirements include the bunch-to-bucket transfer between two rings with an arbitrary ratio in their circumference, two synchronization methods (the phase shift method and the frequency beating method), the required bunch-to-bucket transfer time \SI{10}{\ms}, the tolerable bunch-to-bucket injection center mismatch less than $\pm1^\circ$ and the primary beam transfer as well as the secondary beam. In order to fulfill these requirements, a completely new and unique FAIR bunch-to-bucket transfer system will be developed. The presentation of the concept of the system and the systematic investigation from timing perspective are the purpose of this paper. The concept and basic procedure of the system first of all are presented. Afterwards, a systematic investigation from the beam dynamics, timing requirement of the transfer and kicker trigger perspectives is analyzed. Finally, the application of the system for all FAIR use cases with the frequency beating method is summarized.
 
 
 \begin{description}
@@ -107,16 +109,19 @@ SIS100) and storage rings (the experimental storage ring ESR, the CRYRING@ESR, t
 \section{\label{sec:introduction}INTRODUCTION}
 \input{sections/Introduction}
 
+\section{\label{sec:WRnetwork}REQUIREMENTS FOR THE FAIR B2B TRANSFER SYSTEM}
+\input{sections/Requirement}
+
 \section{\label{concept}CONCEPT OF THE FAIR B2B TRANSFER SYSTEM}
 \input{sections/Concept}
 
 \section{\label{dynamics}BEAM DYNAMICS ANALYSIS OF TWO SYNCHRONIZATION METHODS}
 \input{sections/Dynamics}
 
-\section{\label{timing}TIME CONSTRAINT}
+\section{\label{timing}TIMING CONSTRAINTS}
 \input{sections/Timing}
 
-\subsection{\label{testsetup}Firmware running on LM32}
+\subsection{\label{testsetup}Firmware Running on LM32}
 \input{sections/Testsetup}
 
 %\section{\label{sec:WRnetwork}B2B DATA TRANSFER VIA WHITE RABBIT NETWORK}
@@ -138,6 +143,14 @@ SIS100) and storage rings (the experimental storage ring ESR, the CRYRING@ESR, t
 
 \bibliographystyle{unsrtnat}
 \bibliography{reference}
+
+\onecolumngrid
+\newpage
+\appendix
+\section{\label{appendixwr}Traffic produced by the XenaBay ports of the test setup}
+\input{sections/appendix_wr}
+\section{\label{appendix}Parameters of FAIR B2B transfer use cases}
+\input{sections/appendix}
 
 %  After a bunch of particles is accelerated to the top energy, it must be extracted from the source synchrotron to be injected at, or at least be close to, the center of a bucket of the target synchrotron without the phase and energy error. e.g. From the SIS18, four batches\cite{batch} of the $U^{28+}$ at 200 MeV/u, each of two bunches (h = 2),  are injected into eight out of ten buckets of the  SIS100\cite{SIS18_100}
 %\cite{SIS18} (see Fig.~\ref{fig1}). 

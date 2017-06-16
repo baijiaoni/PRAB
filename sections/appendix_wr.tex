@@ -1,0 +1,34 @@
+\begin{table}[!htb]
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\caption{Traffic produced by the XenaBay ports of the test setup}
+    {\textsl{\small{Adapted from ``Testing the WR Network of the FAIR General Machine Timing System`` by C. Prados and J. Bai, 2016, GSI Internal Document. }}}
+\label{test_setup_network}
+\begin{center}
+    \begin{tabular}{ | c | c | c | c | c | c | c | c | }
+    \hline
+	  \rowcolor[gray]{0.8}
+     \tabincell{c}{Switch} & \tabincell{c}{XenaBay Port} & \tabincell{c}{Traffic} & \tabincell{c}{Ethernet frame size\\(bytes)}&\tabincell{c}{ VLAN} &\tabincell{c}{Priority} &\tabincell{c}{Usage}\\ \hline
+       \multirow{6}*{{\tabincell{c}{WR switch 1}}}& Port 1 & \SI{100}{Mbit/s} &110  & 7 & 7 & Control massage Broadcast \\ \cline{2-7}
+		 &Port 2 &  &  &  &  &\\ \cline{2-7}
+		 &Port 3 &\SI{10}{Mbit/s} &110  & 7 & 7 & Control massage Unicast \\ \cline{2-7}
+   		 &Port 4 &  &  &  & & \\ \cline{2-7}
+		 &Port 5 &  &  &  & & \\ \cline{2-7}
+		 &Port 6 & \SI{1}{Mbit/s} &64 - 1518  & 5 & 5 &  \tabincell{c}{Management Broadcast} \\ \hline
+    \multirow{4}*{{\tabincell{c}{WR switch 2}}}& Port 7 & \SI{2}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management Broadcast} \\ \cline{2-7}
+	& Port 8 &  &  &  & &\\ \cline{2-7}
+	& Port 9 &  &  &  & &\\ \cline{2-7}
+   & Port 10 & \SI{1}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management Broadcast} \\ \hline
+	\multirow{4}*{{\tabincell{c}{WR switch 3}}}& Port 11 &  &  &  &  &\\ \cline{2-7}
+	& Port 12 &  &  &  & & \\ \cline{2-7}
+   & Port 13 & \SI{2}{Mbit/s} &64 - 1518& 5 & 5 &  \tabincell{c}{Management Broadcast} \\ \cline{2-7}
+	& Port 14 & \SI{1}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management Broadcast} \\ \hline
+	\multirow{4}*{{\tabincell{c}{WR switch 4}}}& Port 15 & \SI{1}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management Broadcast} \\ \cline{2-7}
+   & Port 16 & \SI{25}{kbit/s} &110  & 6 & 6 & B2B Broadcast \\ \cline{2-7}
+	& Port 17 & \SI{5}{kbit/s} &110  & 7 & 7 & B2B Unicast \\ \cline{2-7}
+	& Port 18 & \SI{2}{Mbit/s} &64 - 1518 & 5 & 5 &  \tabincell{c}{Management Broadcast} \\ \hline
+	\multicolumn{7}{|c|}{\tabincell{c}{Broadcast: messages are sent by one port and sent to all other ports.\\
+							 Unicast: messages are sent by one port and sent to a specific port.	}}\\ \hline
+    
+    \end{tabular}
+\end{center}
+\end{table}

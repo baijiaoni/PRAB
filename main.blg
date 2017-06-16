@@ -1,0 +1,36 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
+The style file: unsrtnat.bst
+Database file #1: mainNotes.bib
+Warning--entry type for "Note1" isn't style-file defined
+--line 1 of file mainNotes.bib
+Warning--entry type for "Note2" isn't style-file defined
+--line 2 of file mainNotes.bib
+Warning--entry type for "Note3" isn't style-file defined
+--line 3 of file mainNotes.bib
+Warning--entry type for "Note4" isn't style-file defined
+--line 4 of file mainNotes.bib
+Warning--entry type for "Note5" isn't style-file defined
+--line 5 of file mainNotes.bib
+Warning--entry type for "Note6" isn't style-file defined
+--line 6 of file mainNotes.bib
+Warning--entry type for "Note7" isn't style-file defined
+--line 7 of file mainNotes.bib
+Warning--entry type for "Note8" isn't style-file defined
+--line 8 of file mainNotes.bib
+Database file #2: reference.bib
+Repeated entry---line 713 of file reference.bib
+ : @phdthesis{ferrand_development_nodate
+ :                                      ,
+I'm skipping whatever remains of this entry
+Warning--empty year in noauthor_cern_nodate
+Warning--empty year in ferrand_development_nodate
+Warning--empty year in ferrand_development_nodate
+Warning--empty year in Note1
+Warning--empty year in Note2
+Warning--empty year in Note3
+Warning--empty year in Note4
+Warning--empty year in Note5
+Warning--empty year in Note6
+Warning--empty year in Note7
+Warning--empty year in Note8
+(There was 1 error message)

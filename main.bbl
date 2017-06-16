@@ -1,0 +1,231 @@
+\begin{thebibliography}{35}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[noa()]{noauthor_cern_nodate}
+{CERN} accelerator complex.
+\newblock URL \url{https://home.cern/about/accelerators}.
+
+\bibitem[Damerau(2017)]{damerau_lecture_2017}
+H.~Damerau.
+\newblock Lecture {Note}: {Timing}, {Synchronization} \& {Longitudinal}
+  {Aspects}.
+\newblock \emph{CERN Accelerator School}, 2017.
+\newblock URL \url{https://cas.web.cern.ch/cas/IET2017/Lectures/DamerauI.pdf}.
+
+\bibitem[noa(2016)]{noauthor_j-parc_2016}
+J-{PARC}, 2016.
+\newblock URL \url{https://www.kek.jp/en/Facility/ACCL/J-PARC/}.
+
+\bibitem[Tamura et~al.(2006)Tamura, Schnase, Nomura, Yamamoto, and
+  Hasegawa]{tamura_synchronization_2006}
+F.~Tamura, A.~Schnase, M.~Nomura, M.~Yamamoto, and K.~Hasegawa.
+\newblock Synchronization {System} for the {J}-{PARC} {RCS}.
+\newblock In \emph{Proc. of 3rd {Annual} {Meeting} of {Particle} {Accelerator}
+  {Society} of {Japan}}, Tokyo, Japan, 2006.
+\newblock URL
+  \url{http://www.pasj.jp/web_publish/pasj3_lam31/Proceedings/W/WP64.pdf}.
+
+\bibitem[Eschke(2005)]{eschke_international_2005}
+J.~Eschke.
+\newblock International {Facility} for {Antiproton} and {Ion} {Research}
+  ({FAIR}) at {GSI}, {Darmstadt}.
+\newblock \emph{Journal of Physics G: Nuclear and Particle Physics},
+  31\penalty0 (6):\penalty0 S967, 2005.
+\newblock URL
+  \url{http://iopscience.iop.org/article/10.1088/0954-3899/31/6/041/meta}.
+
+\bibitem[noa(2011)]{noauthor_fair_2011}
+{FAIR} - {Facility} for {Antiproton} and {Ion} {Research}, 2011.
+\newblock URL \url{https://www.gsi.de//forschungbeschleuniger/fair.htm}.
+
+\bibitem[Nolden and al.(2006)]{nolden_collector_2006}
+F.~Nolden and et~al.
+\newblock The {Collector} {Ring} {CR} of the {FAIR} {Project}.
+\newblock In \emph{Proc. of {EPAC}}, Edinburgh, Scotland, 2006.
+\newblock URL
+  \url{http://accelconf.web.cern.ch/AccelConf/e06/PAPERS/MOPCH077.PDF}.
+
+\bibitem[Bär and al.(2013)]{bar_technical_2013}
+R.~Bär and et~al.
+\newblock Technical {Design} {Report} on the {Collector} {Ring}.
+\newblock \emph{GSI Internal Document}, 2013.
+\newblock URL
+  \url{https://indico.gsi.de/getFile.py/access?resId=7&materialId=slides&confId=2200}.
+
+\bibitem[Spiller and Franchetti(2006)]{spiller_fair_2006}
+P.~Spiller and G.~Franchetti.
+\newblock The {FAIR} {Accelerator} {Project} at {GSI}.
+\newblock \emph{Nuclear Instruments and Methods in Physics Research Section A:
+  Accelerators, Spectrometers, Detectors and Associated Equipment},
+  561\penalty0 (2):\penalty0 305--309, 2006.
+\newblock URL
+  \url{http://www.sciencedirect.com/science/article/pii/S0168900206000507}.
+
+\bibitem[Steck and al.(2009)]{steck_advanced_2009}
+M.~Steck and et~al.
+\newblock Advanced {Design} of the {FAIR} {Storage} {Ring} {Complex}.
+\newblock In \emph{Proc. of {PAC}}, Vancouver, BC, Canada, 2009.
+\newblock URL
+  \url{https://accelconf.web.cern.ch/AccelConf/PAC2009/papers/fr1gri03.pdf}.
+
+\bibitem[Krause et~al.(1991)Krause, Schaa, and Steiner]{krause_gsi_1991}
+U.~Krause, V.~Schaa, and R.~Steiner.
+\newblock The {GSI} {Control} {System}.
+\newblock In \emph{Proc. of {ICALEPCS}}, volume~91, 1991.
+\newblock URL
+  \url{http://www.iaea.org/inis/collection/NCLCollectionStore/_Public/25/028/25028669.pdf}.
+
+\bibitem[Huhmann and al.(2013)]{huhmann_fair_2013}
+R.~Huhmann and et~al.
+\newblock The {FAIR} {Control} {System}–{System} {Architecture} and {First}
+  {Implementations}.
+\newblock In \emph{Proc. of {ICALEPCS}}, San Francisco, California, USA, 2013.
+\newblock URL \url{http://epaper.kek.jp/ICALEPCS2013/papers/moppc097.pdf}.
+
+\bibitem[Beck and al.(2012)]{beck_new_2012}
+D.~Beck and et~al.
+\newblock The new {White} {Rabbit} based {Timing} {System} for the {FAIR}
+  {Facility}.
+\newblock In \emph{Proc. of {PCaPAC}}, Kolkata, India, 2012.
+\newblock URL
+  \url{http://accelconf.web.cern.ch/Accelconf/pcapac2012/papers/fria01.pdf}.
+
+\bibitem[Kaiser(2014)]{kaiser_f-tn-c-008e_2014}
+K.~Kaiser.
+\newblock F-{TN}-{C}-008e, {Detailed} {Documentation} of the {Scalable}
+  {Control} {Unit} {SCU}3 {FG} 900.112.
+\newblock \emph{FAIR Technical Note}, 2014.
+
+\bibitem[Moritz(2006)]{moritz_butisdevelopment_2006}
+P.~Moritz.
+\newblock {BuTiS}–{Development} of a {Bunchphase} {Timing} {System}.
+\newblock \emph{GSI Scientific Report}, 2006.
+\newblock URL
+  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.162.1765&rep=rep1&type=pdf}.
+
+\bibitem[Moritz(2012)]{moritz_f-cs-rf-14e_2012}
+P.~Moritz.
+\newblock F-{CS}-{RF}-14e {BuTiS}, {Common} {Specification} on the {Bunch}
+  {Phase} {Timing} {System} ({BuTiS}).
+\newblock \emph{FAIR Common Specification}, 2012.
+
+\bibitem[Klingbeil(2013)]{klingbeil_detailed_2013}
+H.~Klingbeil.
+\newblock Detailed {Specification} on the {LLRF} {DSP} {System} for {FAIR}
+  {Ring} {RF} {Systems}.
+\newblock \emph{GSI Internal Document}, 2013.
+
+\bibitem[Bovet et~al.(1970)Bovet, Gouiran, Reich, and
+  Gumowski]{bovet_selection_1970}
+C.~Bovet, R.~Gouiran, K.H. Reich, and I.~Gumowski.
+\newblock A {Selection} {Of} {Formula} {And} {Data} {Useful} {For} {The}
+  {Design} {Of} {AG} {Synchrotrons}.
+\newblock Technical report, CERN, 1970.
+\newblock URL \url{http://cds.cern.ch/record/280305/files/cm-p00041563.pdf}.
+
+\bibitem[Lee(2011)]{lee_accelerator_2011}
+S.~Y. Lee.
+\newblock \emph{Accelerator {Physics}}.
+\newblock WORLD SCIENTIFIC, Singapore, 3 edition, 2011.
+\newblock ISBN 978-981-4374-94-1 978-981-4374-95-8.
+\newblock URL \url{http://www.worldscientific.com/worldscibooks/10.1142/8335}.
+
+\bibitem[Ezura et~al.(2008)Ezura, Yoshii, Tamura, and
+  Schnase]{ezura_beam-dynamics_2008}
+E.~Ezura, M.~Yoshii, F.~Tamura, and A.~Schnase.
+\newblock Beam-{Dynamics} {View} of {RF} {Phase} {Adjustment} for
+  {Synchronizing} {J}-{PARC} {RCS} with {MR} or {MLF}.
+\newblock \emph{KEK Internal Document}, 2008.
+\newblock URL \url{http://ccdb5fs.kek.jp/tiff/2008/0826/0826001.pdf}.
+
+\bibitem[Bai and Ferrand(2016)]{bai_f-tc-c-05_2016}
+J.~Bai and T.~Ferrand.
+\newblock F-{TC}-{C}-05, {Concept} of the {FAIR} {Bunch} {To} {Bucket}
+  {Transfer} {System}.
+\newblock \emph{FAIR Technical Concept}, 2016.
+
+\bibitem[Liebermann and Ondreka(2013)]{liebermann_fair_2013}
+H.~Liebermann and D.~Ondreka.
+\newblock {FAIR} and {GSI} {Reference} {Cycles} for {SIS}18.
+\newblock \emph{GSI Internal Document}, 2013.
+
+\bibitem[Ferrand()]{ferrand_development_nodate}
+T.~Ferrand.
+\newblock \emph{Development of the {LLRF} {System} for a {Deterministic}
+  {Bunch}-to-{Bucket} {Transfer} for {FAIR}}.
+\newblock ({Unpublished} doctoral thesis), Technical University Darmstadt,
+  Germany.
+
+\bibitem[Note1()]{Note1}
+Note1.
+\newblock Datasheet of Draka optical fbier \\ \protect \url
+  {http://www.drakauc.com/ucfibre-optical-patchcords/}.
+
+\bibitem[Note2()]{Note2}
+Note2.
+\newblock Timing messages \\ \protect \url
+  {https://www-acc.gsi.de/wiki/Timing/TimingSystemEvent}.
+
+\bibitem[Note3()]{Note3}
+Note3.
+\newblock A G.652.B type single mode fiber is used for the 1310 and \SI
+  {1550}{nm} wavelength region.
+
+\bibitem[Prados and Bai(2016)]{prados_testing_2016}
+C.~Prados and J.~Bai.
+\newblock Testing the {WR} {Network} of the {FAIR} {General} {Machine} {Timing}
+  {System}.
+\newblock \emph{GSI Internal Document}, 2016.
+
+\bibitem[Note4()]{Note4}
+Note4.
+\newblock LatticeMico32 is a 32-bit microprocessor soft core from Lattice
+  Semiconductor optimized for field-programmable gate arrays (FPGA).
+
+\bibitem[Note5()]{Note5}
+Note5.
+\newblock The DS345 Synthesized Function Generator is a full-featured \SI
+  {30}{\MHz } synthesized function generator that uses an innovative Direct
+  Digital Synthesis architecture. It generates many standard waveforms with
+  excellent frequency resolution (1 $\mu $Hz) and has versatile modulation
+  capabilities including AM, FM, Burst, PM and frequency sweeps.
+
+\bibitem[Note6()]{Note6}
+Note6.
+\newblock A G.652.B type single mode fiber is used for the 1310 and \SI
+  {1550}{nm} wavelength region.
+
+\bibitem[Note7()]{Note7}
+Note7.
+\newblock FEC tools include the etherbone tools, the saftlib tools and the
+  Linux drivers. \\ \protect \url
+  {https://www-acc.gsi.de/wiki/Timing/TimingSystemHowConfigureEnvironment}.
+
+\bibitem[Note8()]{Note8}
+Note8.
+\newblock The SignalTap II Logic Analyzer is a system-level debugging tool that
+  captures and displays signals in circuits designed for implementation in
+  Altera’s FPGAs.
+
+\bibitem[Petzenhauser and al.(2016)]{petzenhauser_concept_2016}
+I.~Petzenhauser and et~al.
+\newblock Concept and {Design} of the {Injection} {Kicker} {System} for the
+  {FAIR} {SIS}100 {Synchrotron}.
+\newblock In \emph{Proc. of {IPAC}}, Busan, Korea, 2016.
+
+\bibitem[Roß(2008)]{ros_sis18_2008}
+J.~Roß.
+\newblock {SIS}18 {Sektoren} {Technische} {Zeichnungen} und {Fotografien}.
+\newblock \emph{GSI Internal Document}, 2008.
+
+\bibitem[Blell(2014)]{blell_f-ds-ie-03e_2014}
+U.~Blell.
+\newblock F-{DS}-{IE}-03e, {Detailed} {Specification} of the {SIS}100
+  {Injection} {Kicker} {Magnets} and their {Pulse} {Power} {Supplies}.
+\newblock \emph{FAIR Detailed Specification}, 2014.
+
+\end{thebibliography}
