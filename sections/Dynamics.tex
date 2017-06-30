@@ -1,14 +1,16 @@
 The FAIR B2B transfer system focuses first of all on the transfer from SIS18 to SIS100, so the beam dynamics of SIS18 beams are analyzed. Because the most stringent requirement are from the lightest and heaviest ion species, the beam dynamics of the $H^+$ and $U^\mathit{28+}$ beams are taken into consideration.
 
-For the rf frequency modulation of the phase shift method ($\Delta B/B=0$), the dispersion function is reflected in the relative momentum shift. The maximum tolerable relative momentum shift is decided by the semi-aperture $X_D(s)$ required for the beam and the dispersion function $D(s)$.
+For the rf frequency modulation of the phase shift method ($\Delta B/B=0$), the dispersion function is reflected in the relative momentum shift. \textcolor{red}{The maximum tolerable relative momentum shift is decided by the semi-aperture $a_H$ required for the beam, the lattice parameters (the envelope of the horizontal betatron oscillation $\beta_{H}$ and the dispersion function $D$) and the vertical beam emittance $\varepsilon_H$~\cite{wilson_lecture_2005}.}
+\textcolor{red}{
 \begin{equation}
-		X_D(s)=D(s)\cdot \frac{\Delta p}{p}|_\mathit{\frac{\Delta B}{B}=0}
+		a_H(s)=\sqrt{\beta_{H}(s)\varepsilon_H}+|D(s)\cdot \frac{\Delta p}{p}|
 \end{equation}
-The maximum tolerable relative momentum of the $H^{+}$ beam and that of the $U^\mathit{28+}$ beam of the SIS18 are same by coincidence, $\Delta p/p_\mathit{\_max}=\pm0.008$. 
+}
+By coincidence the maximum tolerable relative momentum of the $H^{+}$ beam and that of the $U^\mathit{28+}$ beam of the SIS18 are same, $\Delta p/p_\mathit{\_max}=\pm0.008$. 
 
 For the frequency detuning of the frequency beating method ($\Delta p/p=0$), the dispersion function is reflected in the relative bending magnetic field shift. 
 \begin{equation}
-		X_D(s)=-D(s)\cdot \frac{\Delta B}{B}|_\mathit{\frac{\Delta p}{p}=0}
+		a_H(s)=\sqrt{\beta_{H}(s)\varepsilon_H}+|D(s)\cdot \frac{\Delta B}{B}|
 \end{equation}
 The maximum tolerable relative bending magnetic field shift of the $H^{+}$ beam and that of the $U^\mathit{28+}$ beam of the SIS18 are minus of their maximum tolerant relative momentum shift, namely $\Delta B/B_\mathit{\_max}=-\Delta p/p_\mathit{\_max}=\pm0.008$. The constraint on the displacement of the orbit length $\Delta L/L_\mathit{\_max}$ is obtained by 
 
