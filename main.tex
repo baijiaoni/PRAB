@@ -43,12 +43,12 @@
 \usepackage{graphicx}% Include figure files
 \usepackage{multirow}
 \usepackage{colortbl}
-\usepackage[]{units}
+\usepackage{units}
 \usepackage{siunitx}
-\usepackage{pdfpages}
+%\usepackage{pdfpages}
 \usepackage{longtable}
-
 \usepackage{lipsum}
+\usepackage{footnote}
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{graphicx}
@@ -70,23 +70,24 @@
 
 \preprint{APS/123-QED}
 
-\title{Development of the Timing System for the Bunch-to-Bucket Transfer between the FAIR Accelerators}% Force line breaks with \\
+\title{Concept and Systematic Investigation of the Bunch-to-Bucket Transfer between the FAIR Accelerators}% Force line breaks with \\
 
 \author{J. Bai$^{1,2}$}
  \altaffiliation[Email: ]{baijiaoni1314@gmail.com}%Lines break automatically or can be forced with \\
-\author{T. Ferrand$^{1,3}$, O. Kester$^{1,4}$, D. Ondreka$^{1}$, D. Beck$^{1}$, C. Prados$^{1,?}$}%
+\author{T. Ferrand$^{1,3}$, O. Kester$^{4}$, D. Ondreka$^{1}$, D. Beck$^{1}$, C. Prados$^{1,3}$}%
 
 \affiliation{
 1. GSI Helmholtzzentrum f$\ddot{u}$r Schwerionenforschung, 64291 Darmstadt, Germany
-\\2. IAP, Goethe University Frankfurt am Main, 60439 Frankfurt am Main, Germany \\
-3. TEMF, Technique University Darmstadt, 64291 Darmstadt, Germany\\
-4. TRIUMF, 4004 Wesbrook Mall Vancouver, BC V6T 2A3 Canada }
+\\2. IAP, Goethe-Universit\"at, Frankfurt am Main, 60439 Frankfurt am Main, Germany \\
+3. TEMF, Technische Universit\"at Darmstadt, 64291 Darmstadt, Germany\\
+4. TRIUMF, 4004 Wesbrook Mall Vancouver, BC V6T 2A3 Canada
+  }
 
 
 \begin{abstract} 
 The Facility for Antiproton and Ion Research (FAIR) project is aiming at providing high-energy beams of ions of all elements
 from hydrogen to uranium, as well as antiprotons and rare isotopes with high intensities. The existing accelerator facility of GSI  Helmholtz center for Heavy Ion Research GmbH (short: GSI) and the future FAIR facility employ a variety of circular accelerators like heavy ion synchrotrons (the SIS18 and the
-SIS100) and storage rings (the experimental storage ring ESR, the CRYRING@ESR (short: CRYRING), the collector ring CR and the high energy storage ring HESR) for the preparation of secondary beams and experiments. Bunches are required to be transferred into rf buckets among GSI and FAIR circular accelerators for different purposes. All this imposes new requirements on the bunch-to-bucket transfer system. These requirements include the bunch-to-bucket transfer between two rings with an arbitrary ratio in their circumference, two synchronization methods (the phase shift method and the frequency beating method), the required bunch-to-bucket transfer time \SI{10}{\ms}, the tolerable bunch-to-bucket injection center mismatch less than $\pm1^\circ$ and the primary beam transfer as well as the secondary beam. In order to fulfill these requirements, a completely new and unique FAIR bunch-to-bucket transfer system will be developed. The presentation of the concept of the system and the systematic investigation from timing perspective are the purpose of this paper. The concept and basic procedure of the system first of all are presented. Afterwards, a systematic investigation from the beam dynamics, timing requirement of the transfer and kicker trigger perspectives is analyzed. Finally, the application of the system for all FAIR use cases with the frequency beating method is summarized.
+SIS100) and storage rings (the experimental storage ring ESR, the CRYRING@ESR (short: CRYRING), the collector ring CR and the high energy storage ring HESR) for the preparation of secondary beams and experiments. Bunches are required to be transferred into rf buckets among GSI and FAIR circular accelerators for different purposes. All this imposes new requirements on the bunch-to-bucket transfer system. In order to fulfill all requirements, a completely new and unique FAIR bunch-to-bucket transfer system will be developed. The presentation of the concept of the system and the systematic investigation from timing perspective are the purpose of this paper. The concept and basic procedure of the system first of all are presented. Afterwards, a systematic investigation from the beam dynamics and timing requirement of the transfer is analyzed. Finally, the application of the system for all FAIR use cases is summarized.
 
 
 \begin{description}
@@ -127,8 +128,8 @@ SIS100) and storage rings (the experimental storage ring ESR, the CRYRING@ESR (s
 %\section{\label{sec:WRnetwork}B2B DATA TRANSFER VIA WHITE RABBIT NETWORK}
 %\input{sections/WR_network}
 
-\section{\label{kicker}SIS18 EXTRACTION AND SIS100 INJECTION KICKER TRIGGER SCENARIO}
-\input{sections/Kicker}
+%\section{\label{kicker}SIS18 EXTRACTION AND SIS100 INJECTION KICKER TRIGGER SCENARIO}
+%\input{sections/Kicker}
 
 
 

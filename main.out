@@ -1,21 +1,28 @@
-\BOOKMARK [0][-]{section*.2}{Development of the Timing System for the Bunch-to-Bucket Transfer between the FAIR Accelerators}{}% 2
+\BOOKMARK [0][-]{section*.2}{Concept and Systematic Investigation of the Bunch-to-Bucket Transfer between the FAIR Accelerators}{}% 2
 \BOOKMARK [1][-]{section*.1}{Abstract}{section*.2}% 1
 \BOOKMARK [1][-]{section*.3}{INTRODUCTION}{section*.2}% 3
-\BOOKMARK [1][-]{section*.4}{REQUIREMENT FOR THE FAIR B2B TRANSFER SYSTEM}{section*.2}% 4
+\BOOKMARK [1][-]{section*.4}{REQUIREMENTS FOR THE FAIR B2B TRANSFER SYSTEM}{section*.2}% 4
 \BOOKMARK [1][-]{section*.5}{CONCEPT OF THE FAIR B2B TRANSFER SYSTEM}{section*.2}% 5
-\BOOKMARK [2][-]{section*.6}{Phase alignment}{section*.5}% 6
+\BOOKMARK [2][-]{section*.6}{Phase Alignment}{section*.5}% 6
 \BOOKMARK [3][-]{section*.7}{Phase shift method}{section*.6}% 7
 \BOOKMARK [3][-]{section*.8}{Frequency beating method}{section*.6}% 8
-\BOOKMARK [2][-]{section*.9}{Trigger of extraction and injection kickers}{section*.5}% 9
-\BOOKMARK [2][-]{section*.10}{Beam indication for beam instrumentation devices}{section*.5}% 10
-\BOOKMARK [2][-]{section*.11}{Basic procedure}{section*.5}% 11
+\BOOKMARK [2][-]{section*.9}{Trigger of Extraction and Injection Kickers}{section*.5}% 9
+\BOOKMARK [2][-]{section*.10}{Beam Indication for Beam Instrumentation Devices}{section*.5}% 10
+\BOOKMARK [2][-]{section*.11}{Basic Procedure}{section*.5}% 11
 \BOOKMARK [1][-]{section*.12}{BEAM DYNAMICS ANALYSIS OF TWO SYNCHRONIZATION METHODS}{section*.2}% 12
-\BOOKMARK [2][-]{section*.13}{Beam dynamics of phase shift method}{section*.12}% 13
-\BOOKMARK [2][-]{section*.14}{Beam dynamics of frequency beating method}{section*.12}% 14
+\BOOKMARK [2][-]{section*.13}{Beam Dynamics of Phase Shift Method}{section*.12}% 13
+\BOOKMARK [2][-]{section*.14}{Beam Dynamics of Frequency Beating Method}{section*.12}% 14
 \BOOKMARK [1][-]{section*.15}{TIMING CONSTRAINTS}{section*.2}% 15
-\BOOKMARK [2][-]{section*.16}{Characterization of the WR network for the B2B transfer}{section*.15}% 16
-\BOOKMARK [2][-]{section*.17}{Firmware running on LM32}{section*.15}% 17
-\BOOKMARK [1][-]{section*.18}{SIS18 EXTRACTION AND SIS100 INJECTION KICKER TRIGGER SCENARIO}{section*.2}% 18
-\BOOKMARK [1][-]{section*.19}{APPLICATION}{section*.2}% 19
-\BOOKMARK [1][-]{section*.20}{CONCLUSION}{section*.2}% 20
-\BOOKMARK [1][-]{section*.21}{ACKNOWLEDGMENTS}{section*.2}% 21
+\BOOKMARK [2][-]{section*.16}{Characterization of the WR Network for the B2B Transfer}{section*.15}% 16
+\BOOKMARK [2][-]{section*.17}{Firmware Running on LM32}{section*.15}% 17
+\BOOKMARK [1][-]{section*.18}{APPLICATION}{section*.2}% 18
+\BOOKMARK [1][-]{section*.19}{CONCLUSION}{section*.2}% 19
+\BOOKMARK [1][-]{section*.20}{ACKNOWLEDGMENTS}{section*.2}% 20
+\BOOKMARK [1][-]{section*.21}{Traffic produced by the XenaBay ports of the test setup}{section*.2}% 21
+\BOOKMARK [1][-]{section*.22}{Parameters of FAIR B2B transfer use cases}{section*.2}% 22
+\BOOKMARK [2][-]{section*.23}{Parameters of the B2B Transfer from SIS18 to SIS100}{section*.22}% 23
+\BOOKMARK [2][-]{section*.24}{Parameters of the B2B Transfer from SIS18 to ESR}{section*.22}% 24
+\BOOKMARK [2][-]{section*.25}{Parameters of the B2B Transfer from SIS18 to ESR via the FRS}{section*.22}% 25
+\BOOKMARK [2][-]{section*.26}{Parameters of the B2B Transfer from ESR to CRYRING}{section*.22}% 26
+\BOOKMARK [2][-]{section*.27}{Parameters of the B2B Transfer from CR to HESR}{section*.22}% 27
+\BOOKMARK [2][-]{section*.28}{Parameters of the B2B Transfer from SIS100 to CR}{section*.22}% 28

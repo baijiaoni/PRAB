@@ -6,16 +6,16 @@ The test setup was used to check whether the B2B firmware running on the LM32 of
    \caption{Schematic of the test setup.}
    \label{setup}
 \end{figure}
-Fig.~\ref{setup} shows the schematic of the test setup. In this test setup, two SRS MODEL DS345 Synthesized Function Generators (short: DS345) were used to simulate the rf systems of the SIS18 and SIS100. The two DS345s needed to be synchronized to a common reference clock. For simplicity, the DS345 of the SIS100 used a \SI{10}{\MHz} clock from the DS345 of the SIS18 as an external reference clock. The B2B source SCU, the B2B target SCU and the Trigger SCU were connected to a WR switch via single mode fibers, which connected to the WR network. A personal computer (PC) was connected to the WR network, which was a Linux PC installed with the FEC tools, the Altera's Quartus II software and the packETH software. The SCUs were connected to the PC via the Altera USB-Blaster Joint Test Action Group (JTAG) programmer. The PC was used to simulate the DM to produce the B2B start timing message. Besides, the PC monitored the status of the firmware in all SCUs and measured the running time of the firmware by the SignalTap II Logic Analyzer feature within the Quartus II software. Two DS345s outputted signals to an oscilloscope, together with an output signal from the trigger SCU. Fig.~\ref{testsetup_text} shows the front view of the test setup. 
+Fig.~\ref{setup} shows the schematic of the test setup. In this test setup, two SRS MODEL DS345 Synthesized Function Generators (short: DS345) were used to simulate the rf systems of the SIS18 and SIS100. The two DS345s needed to be synchronized to a common reference clock. For simplicity, the DS345 of the SIS100 used a \SI{10}{\MHz} clock from the DS345 of the SIS18 as an external reference clock. The B2B source SCU, the B2B target SCU and the Trigger SCU were connected to a WR switch via single mode fibers, which connected to the WR network. A personal computer (PC) was connected to the WR network, which was a Linux PC installed with the FEC tools, the Altera's Quartus II software and the packETH software. The SCUs were connected to the PC via the Altera USB-Blaster Joint Test Action Group (JTAG) programmer. The PC was used to simulate the DM to produce the B2B start timing message by the packETH software. Besides, the PC monitored the status of the firmware in all SCUs and measured the running time of the firmware by the SignalTap II Logic Analyzer feature within the Quartus II software. Two DS345s outputted signals to an oscilloscope, together with an output signal from the trigger SCU. Fig.~\ref{testsetup_text} shows the front view of the test setup. 
 %testsetup.odg
 \begin{figure}[!htb]
    \centering   
-   \includegraphics*[width=65mm]{testsetup_text.jpg}
+   \includegraphics*[width=85mm]{testsetup_text.jpg}
    \caption{Front view of the test setup.}
    \label{testsetup_text}
 \end{figure}
 
-From the functional perspective, the B2B source and target SCUs measure the phase of the signals from the two DS345, after they receive the B2B start timing message from the PC. Then the phase measurement of the target ring will be transferred from the B2B target SCU to the B2B source SCU. After receiving the message containing the phase measurement, the B2B source SCU calculates the start of the synchronization window and then distributes the start of the synchronization window to the trigger SCU via the WR network. When the trigger SCU receives the message containing the start of the synchronization window, it produces a TTL signal output to the oscilloscope, indicating the phase alignment of the two signals from the DS345s. During the process, the running time of some tasks of the firmware was measured by the SignalTap II Logic Analyzer, see Tab. ~\ref{execution_time}.
+From the functional perspective, the B2B source and target SCUs measured the phase of the signals from two DS345, after they received the B2B start timing message from the PC. Then the measured phase value of the target ring was transferred from the B2B target SCU to the B2B source SCU. After receiving the message containing the measured phase value, the B2B source SCU calculated the start of the synchronization window and then distributed the start of the synchronization window to the trigger SCU via the WR network. When the trigger SCU received the message containing the start of the synchronization window, it produced a TTL signal output to the oscilloscope, indicating the phase alignment of the two signals from the DS345s. During the process, the running time of some tasks of the firmware was measured by the SignalTap II Logic Analyzer, see Tab. ~\ref{execution_time}.
 
 \begin{table}[!htb]
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
@@ -30,11 +30,11 @@ From the functional perspective, the B2B source and target SCUs measure the phas
       \tabincell{c}{Timing message detection} & \SI{336}{\ns} & \SI{336}{\ns}\\ \hline
 %      \tabincell{c}{LM32 reads from/writes \\to the SCU slave} & \SI{450}{\ns} & \SI{450}{\ns}\\ \hline
       \tabincell{c}{Timing message reading} & \SI{2.7}{\us} & \SI{2.7}{\us}\\ \hline
-     \tabincell{c}{Start of the synchronization\\ window calculation} & \SI{12.6}{\us}& \SI{12.8}{\us} \\ \hline
+     \tabincell{c}{Calculation \\the synchronization\\ window} & \SI{12.6}{\us}& \SI{12.8}{\us} \\ \hline
      \tabincell{c}{Timing message sending} & \SI{3.2}{\us} & \SI{3.2}{\us}\\ \hline
 
     \end{tabular}
 \end{center}
 \end{table}
 
-According to the task running time measurement result, the time consumption of the timing message detection, reading or sending is shorter than \SI{3}{\us}, $3\%$ of \SI{100}{\us}. The calculation time of the start of the synchronization window is much less than \SI{100}{\us}. Hence, the B2B firmware running on LM32 meets the timing constraints of the B2B transfer.
+According to the measured task running time results, the total time consumption on the source SCU is shorter than \SI{20}{\us}, $20\%$ of \SI{100}{\us}. Hence, the B2B firmware running on LM32 meets the timing constraints of the B2B transfer.

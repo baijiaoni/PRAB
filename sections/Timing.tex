@@ -1,5 +1,5 @@
 The FAIR B2B transfer system has strict timing constraints. Because beam feedback loops (e.g. the beam phase control
-loop, the bunch-by-bunch longitudinal feedback loop) must be switched off before the B2B transfer, which modify the rf system according to the actual beam, the beam may be stable only for a short period of time. For most FAIR use cases, the upper bound time of the B2B transfer process is \SI{10}{\ms}. 
+loop, the bunch-by-bunch longitudinal feedback loop~\cite{klingbeil_new_2011}) must be switched off before the B2B transfer, which modify the rf system according to the actual beam, the beam may be stable only for a short period of time. For most FAIR use cases, the upper bound time of the B2B transfer process is \SI{10}{\ms}. 
 
 The complete phase measurement needs approximately \SI{500}{\us}. The longer time is used for the phase measurement, the
 more precise the measurement result will be ~\cite{ferrand_development_nodate}. The upper bound B2B related message transfer latency  on the WR network is defined as \SI{500}{\us}. So the transfer latency of the phase measurement from the B2B target SCU to the B2B source SCU is \SI{500}{\us} in the worst case. The B2B source SCU needs about \SI{100}{\us} for the data calculation, message creation and sending. The timing message containing the start of the synchronization window needs a \SI{500}{\us} transfer latency on the network to the DM and another \SI{500}{\us} further to SCUs responsible for beam instrumentation devices. Bunches must be transferred  after beam instrumentation devices are activated. Hence, the start of the synchronization window must be $2 \cdot \SI{500}{\us} + \SI{100}{\us} + 2\cdot\SI{500}{\us} = \SI{2.1}{\ms}$ later than the start of the B2B transfer process. 
@@ -7,16 +7,16 @@ more precise the measurement result will be ~\cite{ferrand_development_nodate}. 
 In the following part, the WR network is characterized for the B2B transfer to meet the \SI{500}{\us} timing constraint and the running time of the B2B related firmware running on the soft CPU, Latticemico32, of the SCU is checked for the timing constraints of \SI{100}{\us}.
 
 \subsection{Characterization of the WR Network for the B2B Transfer}
-In order to meet the timing constraint of the B2B transfer, the data transfer on the WR network has an upper bound transfer latency of \SI{500}{us}, \SI{400}{us} of which can be used for the network transfer. Hence, the maximum number of WR switch layers between the B2B related SCUs must be defined. However, the more switches are used, the more optical fiber connections will be and the corresponding higher possibility of frame lost on the connections will happen. The maximum number of WR switch layers is constrained by the transfer latency and the tolerable lost frames. The optical fiber causes the bit error of the frame, which will be discarded by the switch. The lost frame caused by bit errors is measured by the frame error rate (FER), which is defined as the ratio between the number of lost frames caused by bit errors and the number of sent frames. The FER is calculated as ~\cite{prados_white_2011}
+In order to meet the timing constraint of the B2B transfer, the data transfer on the WR network has an upper bound transfer latency of \SI{500}{us}, \SI{400}{us} of which can be used for the network transfer. Hence, the maximum number of WR switch layers between the B2B related SCUs must be defined. Meanwhile, more switches require more optical fiber connections. The optical fiber connections cause the bit error of the frame. These frames will be discarded by switches. Therefore, the maximum number of WR switch layers is constrained not only by the transfer latency, but also by the tolerable lost frames. The lost frame caused by bit errors is measured by the frame error rate (FER), which is defined as the ratio between the number of lost frames caused by bit errors and the number of sent frames. The FER is calculated as ~\cite{prados_white_2011}
 \begin{equation}
 \label{FER}
 	FER=n\cdot10^{-12}\cdot880
 \end{equation}
-where n is the number of WR switches used to establish the communication and the optical fiber's bit error rate is specified by the manufactures is $10^{-12}$ ~\cite{noauthor_datasheet_nodate} and 880 is the length of an Ethernet frame including one timing message in the unit of bit ~\cite{beck_timing_2015}.  
+where n is the number of WR switches used to establish the communication and the optical fiber's bit error rate\footnote{Bit error rate: the number of bit errors divided by the total number of transferred bits during a studied time interval. } specified by the manufactures is $10^{-12}$ ~\cite{noauthor_datasheet_nodate} and 880 is the length of a timing message  in the unit of bit ~\cite{beck_timing_2015}.  
 
-For the B2B transfer, there are two types of messages. The $1^\mathit{st}$ type message is used to exchange data between two rings, which is sent by one SCU and sent to all other B2B related SCUs, e.g. the message of the phase measurement. The bandwidth is \SI{25}{kbit/s}. The $2^\mathit{nd}$ type message is used to transfer data to the DM, which is sent by one SCU and sent only to the DM, e.g. the message of the start of the synchronization window. The bandwidth is \SI{5}{kbit/s}. Both the two types have the same format as the timing message with the length of \SI{110}{bytes}. The tolerable FER is defined as one lost frame during a certain duration and calculated as 
+For the B2B transfer, there are two types of messages. The $1^\mathit{st}$ type message is used to exchange data between two rings, which is sent by one SCU and sent to all other B2B related SCUs, e.g. the message of the phase measurement. The bandwidth is \SI{25}{kbit/s}. The $2^\mathit{nd}$ type message is used to transfer data to the DM, which is sent by one SCU and sent only to the DM, e.g. the message of the start of the synchronization window. The bandwidth is \SI{5}{kbit/s}~\cite{bai_f-tc-c-05_2016}. Both the two types have the same format as the timing message with the length of \SI{110}{bytes}. The tolerable FER is defined as one lost frame during a certain duration and calculated as 
 \begin{equation}
-	tolerable\_FER=\frac{1}{bandwith\cdot duration/880}
+	tolerable\_FER=\frac{1}{bandwith\cdot duration}\cdot 880
 \end{equation}
 
 The requirements for these two type messages are listed here.
@@ -66,10 +66,10 @@ The $2^\mathit{nd}$ type B2B messages are produced by one XenaBay's port and tra
 
 Based on the transfer latency requirement, the tolerable number of switch layers for the $1^\mathit{st}$ and $2^\mathit{nd}$ type B2B messages are calculated as
 \begin{equation}
-		\frac{\SI{400}{\us}}{\SI{28}{\us/switch}}>13
+		\frac{\SI{400}{\us}}{\SI{28}{\us}}>13
 \end{equation}
 \begin{equation}
-		\frac{\SI{400}{\us}}{\SI{23}{\us/4\_switch}}\cdot 4 > 67
+		\frac{\SI{400}{\us}}{\SI{23}{\us}}\cdot 4 > 67
 \end{equation}
 
 According to the tolerable FER requirement, the maximum number of switch layers for the two types are calculated by eq. ~\ref{FER}.  
@@ -80,7 +80,7 @@ n_{1^{st}}=\frac{FER}{880\cdot10^{-12}}=\frac{6.70\cdot 10^{-9}}{880\cdot10^{-12
 n_{2^{nd}}=\frac{FER}{880\cdot10^{-12}}=\frac{1.34\cdot 10^{-9}}{880\cdot10^{-12}}\approx 38
 \end{equation}
 
-The tolerable FER requires less number of WR switch layers compared with the result from the transfer latency requirement. Hence, the maximum number of switch layers for the two types messages are 8 and 38, when one lost B2B related frame is tolerable every two months. 
+The tolerable FER requires less number of WR switch layers compared with the result from the transfer latency requirement. Hence, the maximum number of switch layers for the two type messages are 8 and 38, when one lost B2B related frame is tolerable every two months. 
 
 %\begin{table}[!htb]
 %\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}

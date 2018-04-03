@@ -1,11 +1,11 @@
 The FAIR B2B transfer system focuses first of all on the transfer from SIS18 to SIS100, so the beam dynamics of SIS18 beams are analyzed. Because the most stringent requirement are from the lightest and heaviest ion species, the beam dynamics of the $H^+$ and $U^\mathit{28+}$ beams are taken into consideration.
 
-For the rf frequency modulation of the phase shift method ($\Delta B/B=0$), the dispersion function is reflected in the relative momentum shift. \textcolor{red}{The maximum tolerable relative momentum shift is decided by the semi-aperture $a_H$ required for the beam, the lattice parameters (the envelope of the horizontal betatron oscillation $\beta_{H}$ and the dispersion function $D$) and the vertical beam emittance $\varepsilon_H$~\cite{wilson_lecture_2005}.}
-\textcolor{red}{
+For the rf frequency modulation of the phase shift method ($\Delta B/B=0$), the dispersion function is reflected in the relative momentum shift. The maximum tolerable relative momentum shift is decided by the semi-aperture $a_H$ required for the beam, the lattice parameters (the envelope of the horizontal betatron oscillation $\beta_{H}$ and the dispersion function $D$) and the vertical beam emittance $\varepsilon_H$~\cite{wilson_lecture_2005}.
+
 \begin{equation}
 		a_H(s)=\sqrt{\beta_{H}(s)\varepsilon_H}+|D(s)\cdot \frac{\Delta p}{p}|
 \end{equation}
-}
+
 By coincidence the maximum tolerable relative momentum of the $H^{+}$ beam and that of the $U^\mathit{28+}$ beam of the SIS18 are same, $\Delta p/p_\mathit{\_max}=\pm0.008$. 
 
 For the frequency detuning of the frequency beating method ($\Delta p/p=0$), the dispersion function is reflected in the relative bending magnetic field shift. 
@@ -22,7 +22,7 @@ The maximum tolerable relative bending magnetic field shift of the $H^{+}$ beam 
 \end{cases}
 \end{eqnarray}
 
-where $\alpha_p$ is the momentum compaction factor. $\alpha_p$ equals to 0.01 for the SIS18 $H^+$ beam and 0.03 for the SIS18 $U^\mathit{28+}$ beam \cite{liebermann_fair_2013}.  
+$\alpha_p$ equals to 0.01 for the SIS18 $H^+$ beam and 0.03 for the SIS18 $U^\mathit{28+}$ beam \cite{liebermann_fair_2013}.  
 
 The reasonable bucket size of a running bucket is larger than $80\%$ of the size of a stationary bucket, namely the bucket area factor $\alpha_b(\phi_{s})\ge 80\%$. Due to the constraint of the bucket size, the synchronous phase must stay within the range between $-6.4^\circ$ and $+6.4^\circ$ according to eq. ~\ref{bucket_size}.
 
@@ -75,7 +75,7 @@ Case (2) is a parabolic modulation, which consists of three parabolas and two li
 \frac{1}{4T} +\frac{3}{T^2}(t-t_0 -\frac{T}{6}) &(t_0+\frac{T}{6},t_0+\frac{2T}{6}]\cr 
 \frac{1}{T}-\frac{9}{T^3}(t-t_0-\frac{T}{2})^2 &(t_0+\frac{2T}{6},t_0+\frac{4T}{6}]\cr  
 \frac{3}{4T} -\frac{3}{T^2}(t-t_0 -\frac{4T}{6})  &(t_0+\frac{4T}{6},t_0+\frac{5T}{6}]\cr  
-\frac{9}{T^3}(t-t_0-T)^2 &(t_0+\frac{5T}{6,t_0+T}]\cr  
+\frac{9}{T^3}(t-t_0-T)^2 &(t_0+\frac{5T}{6},t_0+T]\cr  
 
 \end{cases}
 \end{aligned}
@@ -89,7 +89,7 @@ Case (3) is also a parabolic modulation, consisting of three parabolas.
 \begin{cases}
 \frac{8}{T^3}(t-t_0)^2&(t_0+0,t_0+\frac{T}{4}]\cr  
 \frac{1}{T}-\frac{8}{T^3}[(t-t_0)-\frac{T}{2}]^2	&(t_0+\frac{T}{4},t_0+\frac{3T}{4}]\cr 
-\frac{8}{T^3}[T-(t-t_0)]^2	&(t_0+\frac{4T}{4},t_0+T]\cr  
+\frac{8}{T^3}[T-(t-t_0)]^2	&(t_0+\frac{3T}{4},t_0+T]\cr  
 
 \end{cases}
 \end{aligned}
@@ -101,7 +101,7 @@ Case (3) is also a parabolic modulation, consisting of three parabolas.
 {\small{(a) three rf frequency modulation cases (b) difference between case (2)/(3) and case (1) (c) the $1^\mathit{st}$ time derivative of three cases (d) the $2^\mathit{nd}$ time derivative of three cases }}
    \label{4case}
 \end{figure}
-Fig.~\ref{4case} shows three rf frequency modulation profiles and their $1^\mathit{st}$ and $2^\mathit{nd}$ time derivatives. The corresponding beam dynamics parameters are illustrated in Fig. ~\ref{moment} and summarized in Tab. ~\ref{U_phase_shift}.
+Fig.~\ref{4case} shows three rf frequency modulation profiles and their $1^\mathit{st}$ and $2^\mathit{nd}$ time derivatives by Matlab. The corresponding beam dynamics parameters are illustrated in Fig. ~\ref{moment} and summarized in Tab. ~\ref{U_phase_shift}.
 \begin{figure}[!htb]
    \centering   
    \includegraphics*[width=85mm]{moment.png}
@@ -140,7 +140,7 @@ For SIS18, the chromaticities $Q^`_x$ and $Q^`_y$ for the $U^\mathit{28+}$ opera
 The chromatic tune shifts for three cases are negligible.
 
 
-For the SIS18 \SI{4}{GeV/u} $H^{+}$ beam, $|\Delta f_{\mathit{rf}}|$ must be smaller than \SI{283}{Hz} and $|\frac{d\Delta f_{\mathit{rf}}}{dt}|$ must be continuous and smaller than \SI{1.9}{Hz/ms} and $|\frac{d^2\Delta f_{\mathit{rf}}}{dt^2}|$ must be smaller than \SI{0.2}{Hz/ms^2}. With regard to these criteria, the sinusoidal modulation with $T=\SI{50}{\ms}$ is used for the phase shift of $\pi$. The corresponding beam dynamics parameters are in Tab. ~\ref{dynamic_param_H_20}.
+For the SIS18 \SI{4}{GeV/u} $H^{+}$ beam, $|\Delta f_{\mathit{rf}}|$ must be smaller than \SI{283}{Hz} and $|\frac{d\Delta f_{\mathit{rf}}}{dt}|$ must be continuous and smaller than \SI{1.9}{Hz/ms} and $|\frac{d^2\Delta f_{\mathit{rf}}}{dt^2}|$ must be smaller than \SI{0.2}{Hz/ms^2} according to eq. ~\ref{eq:phaseP11}, ~\ref{eq2} and  ~\ref{eq:derivation1}. With regard to these criteria, the sinusoidal modulation with $T=\SI{50}{\ms}$ is used for the phase shift of $\pi$. The corresponding beam dynamics parameters are in Tab. ~\ref{dynamic_param_H_20}.
 \begin{table}[!htb]
 \newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
 \caption{Parameters accompanying with a \SI{50}{ms} sinusoidal modulation for the SIS18 $H^+$ beam}
@@ -148,8 +148,8 @@ For the SIS18 \SI{4}{GeV/u} $H^{+}$ beam, $|\Delta f_{\mathit{rf}}|$ must be sma
 \begin{center}
     \begin{tabular}{ | c | c | c | c | c | c | c |}
     \hline
-     \tabincell{c}{Relative\\momentum\\ shift} & \tabincell{c}{Maximum \\orbit length\\ displacement} &\tabincell{c}{Bucket\\size}  & \tabincell{c}{Synchronous\\phase} &\tabincell{c}{Adiabaticity}  \\ \hline
-       $<5.70\cdot10^{-4}$ & $<5.70\cdot10^{-6}$	& $>86\%$ &  $\pm4.2^\circ$  & $<0.80\cdot10^{-4}$\\ \hline
+     \tabincell{c}{Maximum \\orbit length\\ displacement}  & \tabincell{c}{Maximum \\Relative\\momentum\\ shift}&\tabincell{c}{Synchronous\\phase} & \tabincell{c}{Minimum\\ bucket\\area factor}  &\tabincell{c}{Maximum \\adiabaticity}  \\ \hline
+      $5.70\cdot10^{-6}$  & $5.70\cdot10^{-4}$	& $< \pm4.2^\circ$& $86\%$    & $0.80\cdot10^{-4}$\\ \hline
     \end{tabular}
 \end{center}
 \end{table}
@@ -163,6 +163,8 @@ For the frequency modulation of the SIS18 $H^+$ beam, a longer period sinusoidal
 \Delta Q_y = Q^\prime_{\mathit{y}}\frac{\Delta{p}}{p}= -4.4\cdot 5.7\cdot 10^{-4}=-2.51\cdot 10^{-3} 
 \end{equation}
 For the SIS18 \SI{4}{GeV/u} $H^{+}$ beam, the chromatic tune shifts for the \SI{50}{\ms} sinusoidal modulation are negligible.
+
+The investigation of the phase shift performance based on the experiments carried out in the Proton Synchrotron (PS) at CERN is presented in the article~\cite{Tibo_RF_2018}.
 
 \subsection{Beam Dynamics of Frequency Beating Method} 
 The frequency detuning has no influence on the chromaticity tune shift, because the momentum of the synchronous particle is not affected by the frequency detuning in order to guarantee the match of the extraction and injection energy.
